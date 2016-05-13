@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="app">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/css.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+
+    </head>
+    <body>
+        <header style="text-align: center;position: relative; background: rgb(255,255,255); padding: 22px 0;padding: 20px 0; box-shadow: 0 0 10px rgba(0,0,0,0.5);"  >
+            <a href="#/" ><img style=" width: 15%;" alt="logo" src="img/logo.png"></a>
+            <span class="balanceInfo" style="float: left;" ng-show="$root.headers">
+                <span>{{$root.headers.balance}}&#8372;</span>
+                <span>{{$root.headers.deducted}}&#8372;</span>
+
+            </span>
+            <div class="balanceLine"  style="background:{{$root.headers.line.background}}"></div>
+
+            <img style="position: absolute;height: 50px;right: 0;top: 26px;" alt="menu" src="img/ic_menu_black_18px.svg"  ng-click="toggleRight()">
+            <!--            <div class="balanceLine" style="margin: 20px 0;" ng-style="line"></div>-->
+        </header>
+    <ng-view></ng-view>
+    <div  layout="column" ng-cloak>
+        <section layout="row" flex>           
+            <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+                <md-toolbar class="md-theme-light">
+                    <h1 class="md-toolbar-tools toolbarHeader">Меню</h1>
+                </md-toolbar>
+                <md-content  layout-padding style="padding: 0; font-size: 20px;">
+                    <a ng-hide="isLogged" class="menuLink" ng-click="Registration()">Реєстрація</a>
+                    <a ng-hide="isLogged" class="menuLink" ng-click="Login()">Авторизація</a>
+                    <a ng-show="isLogged" class="menuLink" ng-click="openAccount()">Особистий кабінет</a>
+                    <!--<a class="menuLink" ng-click="openProjectList()">Список проектів</a>-->
+                </md-content>
+            </md-sidenav>
+        </section>
+    </div>
+    <footer>
+        PoltavaInvestments &copy; 2016
+    </footer>
+
+
+
+    <!--<script src="js/libs/angular.min.js"></script>-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="js/libs/angular-route/angular-route.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+    <script src="js/controllers/app.js"></script>
+    <script src="js/controllers/userLoginController.js"></script>
+    <script src="js/controllers/userRegistrationController.js"></script>
+    <script src="js/controllers/userEditController.js"></script>
+    <script src="js/controllers/projectListController.js"></script>
+    <script src="js/controllers/projectMyListController.js"></script>
+    <script src="js/controllers/projectViewController.js"></script>
+    <script src="js/controllers/accountController.js"></script>
+</body>
+</html>

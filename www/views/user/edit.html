@@ -1,0 +1,30 @@
+<div>
+    <form name="editForm">
+        <div>
+            <img name="preview" alt="avatar" src="{{edit.logo}}" class="userAvatar">
+            <input type="file" id="file">
+    
+        </div>
+        <div>
+            <input placeholder="First Name" ng-model="edit.first_name">
+        </div>
+        <div>
+            <input placeholder="Last Name" ng-model="edit.last_name">
+        </div>
+        <div>
+            <select ng-model="edit.gender">
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+            </select>
+            <div>
+                <input type="date" ng-model="edit.birthday">
+            </div>
+            <div>
+                <input type="phone" placeholder="Phone number" ng-model="edit.mobile">
+            </div>
+            <div>
+                <input type="email" placeholder="Email" ng-model="edit.email">
+            </div>
+            <input type="submit" ng-click="send(editForm,edit)">
+    </form>
+</div>

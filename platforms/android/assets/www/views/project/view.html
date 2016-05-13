@@ -1,0 +1,75 @@
+<div class="projectView">
+
+    <div class="imgContainer">
+        <img alt="image" src="{{project.image}}"> 
+    </div>
+    <div class="projectTitleParent">
+        <h1 class="projectTitle">{{project.name}}</h1><br>
+        <span class="author"> by {{project.user}}</span>  
+    </div>
+
+    <span ng-show="isLogged" class="currency" ng-click="openModal(this.project.name, this.project.remained_parts, this.project.id, $event)">&#8372;</span>
+    <div class="descBeforeBalanceLine">{{project.description}}</div><br>
+    <div class="balanceLine" ng-style="line"></div>
+    <md-tabs md-dynamic-height style="width: 100%">
+        <md-tab label="Детальніше">
+
+            <div class="topProject">
+
+                <!--<div>{{project.description}}</div>-->
+                <nav>
+                    <div><span>Необхідно зібрати:<span class="titleDigital"> {{project.cost_total}}&#8372;</span></span></div>
+                    <div><span>Зібрано:<span class="titleDigital"> {{(project.cost_total * Math.ceil(project.investments * 100 / project.cost_total)) / 100}}&#8372;</span></span></div>
+                    <div><span>До кінця збору коштів:<span class="titleDigital">{{date(project.closing_date)}} днів</span></span></div>
+                    <!--<span>Дата релізу: <span class="titleDigital">{{contertToDate(project.release_date)}}</span></span><br>-->
+                    <!--<span>Дата окупності: <span class="titleDigital">{{contertToDate(project.payback_period)}}</span></span><br>-->
+                    <div><span>Очікуваний прибуток: <span class="titleDigital">{{project.profitability}}%</span></span></div>
+                </nav>
+<!--                <div>
+                    <a href="list.html"></a>
+                    <input style="    width: 46%;display: inline;" ng-model="part" type="number" min="0" max="{{project.quantity_share}}">
+                    <md-button style="    display: inline-block;" class="md-raised buy" ng-click="buy(part, this.project.id)">Придбати</md-button>
+                </div>-->
+            </div>
+        </md-tab>
+        <md-tab label="Коментарі" ng-click="loadComments()" >
+
+            <div style="padding: 20px 10px;">
+                <strong>Комментарии:</strong>
+                <ul class="comments" >
+                    <li ng-repeat="comment in comments">
+                        <span class="commentsImageParent">
+                            <img class="userImage" alt="img" src="{{comment.logo}}">
+                        </span>
+                        <div class="parentCommentBody">
+                            <span class="commentUsername">
+                                {{comment.first_name}}: <span style="font-style: italic;
+                                                              font-size: 10px;"></span>
+                            </span>
+
+                            <div class="commenBody">
+                                {{comment.comment}}
+                            </div>
+                            <div class="commentDate">
+                                {{comment.date}}
+                            </div>
+                        </div>
+
+
+                    </li>
+                </ul>
+                <div ng-show="isLogged">
+
+
+                    <strong>Ваш комментарий:</strong>
+
+                    <textarea ng-model="comment"></textarea>
+                    <button type="button" class="button btnChoose"ng-click="sendComment(comment, project.id)">Отправить
+                        <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                    </button>
+                </div>
+            </div>
+        </md-tab>
+
+
+</div>

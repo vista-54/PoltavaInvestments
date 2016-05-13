@@ -1,0 +1,651 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20.04.2016, 18:34:19
+    Author     : Виталий
+*/
+a,span{
+    outline: none;
+}
+.userAvatar{
+    width: 200px;
+}
+.userBtn{
+    float: right;
+    padding: 15px;
+
+}
+.topPanel {
+    overflow: hidden;
+    /*border-bottom: 1px solid rgb(88,88,88);*/
+    /*border-top: 1px solid rgb(88,88,88);*/
+}
+.mainMenu{
+    text-align: center;
+    border-bottom: 1px solid rgb(88,88,88);
+    /*border-top: 1px solid rgb(88,88,88);*/
+}
+.mainMenu ul li{
+    list-style: none;
+}
+
+/* LOGIN FORM*/
+body {
+    /*font-family: Roboto,sans-serif,"Helvetica Neue";*/
+    background: #eee;
+    /*-webkit-font-smoothing: antialiased;*/
+    min-height: 100%!important;
+    height: auto!important;
+}
+
+hgroup { 
+    text-align:center;
+    margin-top: 4em;
+}
+
+h1, h3 { font-weight: 300; }
+
+h1 {     color: rgba(0,0,0,0.87);}
+
+h3 { color: #4a89dc; }
+
+form {
+    /*width: 380px;*/
+    margin:0 auto;
+    padding: 3em 2em 2em 2em;
+    background: #fafafa;
+    border: 1px solid #ebebeb;
+    box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+}
+
+.group { 
+    position: relative; 
+    margin-bottom: 45px; 
+}
+
+input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    -webkit-appearance: none;
+    display: block;
+    background: #fafafa;
+    color: #636363;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #757575;
+}
+
+input:focus { outline: none;border: 0 }
+
+
+/* Label */
+
+label {
+    color: #999; 
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: all 0.2s ease;
+}
+
+
+/* active */
+
+input:focus ~ label, input.used ~ label {
+    top: -20px;
+    transform: scale(.75); left: -2px;
+    /* font-size: 14px; */
+    color: rgb(67, 195, 42);
+
+}
+
+
+/* Underline */
+
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.bar:before, .bar:after {
+    content: '';
+    height: 2px; 
+    width: 0;
+    bottom: 1px; 
+    position: absolute;
+    background: rgb(67, 195, 42); 
+    transition: all 0.2s ease;
+}
+
+.bar:before { left: 50%; }
+
+.bar:after { right: 50%; }
+
+
+/* active */
+
+input:focus ~ .bar:before, input:focus ~ .bar:after { width: 50%; }
+
+
+/* Highlight */
+
+.highlight {
+    position: absolute;
+    height: 60%; 
+    width: 100px; 
+    top: 25%; 
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+/* active */
+
+input:focus ~ .highlight {
+    animation: inputHighlighter 0.3s ease;
+}
+
+
+/* Animations */
+
+@keyframes inputHighlighter {
+    from { background: #4a89dc; }
+    to 	{ width: 0; background: transparent; }
+}
+
+
+/* Button */
+
+.button {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    margin: .3em 0 1em 0;
+    width: 100%;
+    vertical-align: middle;
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+    letter-spacing: 1px;
+    background: transparent;
+    border: 0;
+    /*border-bottom: 2px solid #3160B6;*/
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.button:focus { outline: 0; }
+
+
+/* Button modifiers */
+
+.buttonBlue {
+    background: #4a89dc;
+    text-shadow: 1px 1px 0 rgba(39, 110, 204, .5);
+}
+.buttonGreen {
+    background: #23C108;
+    text-shadow: 1px 1px 0 rgba(39, 110, 204, .5);
+}
+.buttonBlue:hover { background: #357bd8; }
+
+
+/* Ripples container */
+
+.ripples {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+}
+
+
+/* Ripples circle */
+
+.ripplesCircle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.ripples.is-active .ripplesCircle {
+    animation: ripples .4s ease-in;
+}
+
+
+/* Ripples animation */
+
+@keyframes ripples {
+    0% { opacity: 0; }
+
+    25% { opacity: 1; }
+
+    100% {
+        width: 200%;
+        padding-bottom: 200%;
+        opacity: 0;
+    }
+}
+
+footer {
+    text-align: center; 
+    padding: 80px 0;
+}
+
+footer p {
+    color: #888;
+    font-size: 13px;
+    letter-spacing: .4px;
+}
+
+footer a {
+    color: #4a89dc;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+footer a:hover {
+    color: #666;
+    text-decoration: underline;
+}
+
+footer img {
+    width: 80px;
+    transition: all .2s ease;
+}
+
+footer img:hover { opacity: .83; }
+
+footer img:focus , footer a:focus { outline: none; }
+/*LoginForm END*/
+.topProject{
+    /*padding: 20px 15px;*/
+    background: rgb(255,255,255);
+}
+.topProject img{
+    width: 100%;
+}
+.topProject nav{
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+.topProject nav span{
+    position: relative;
+    font-size: 20px;
+    background: rgb(255,255,255);
+    /*    float: left;
+        width: 30%;*/
+}
+/*.projectView nav span{
+    float: left;
+    width: 30%;
+}*/
+.projectView nav{
+    /*border-top: 1px solid rgb(88,88,88);*/
+}
+
+.projectView img{
+    /*width: 50px;*/
+    width: 100%;
+}
+.imgContainer{
+    text-align: center;
+}
+.btnChoose{
+    background: rgb(48, 216, 84)!important;
+
+}
+.author{
+    font-size: 15px;
+    color: rgb(171, 158, 158);
+    float: right;
+}
+
+/*.projectView h1{
+    font-size: 20px;
+    font-weight: 600;
+}*/
+
+header a{
+    outline: none;
+}
+
+.projectView{
+    /*padding: 0 10px 0 10px;*/
+}
+.projects ul{
+    padding: 0;
+    /*background: rgb(255,255,255);*/
+}
+.projects nav{
+    padding: 10px 10px;
+}
+.projects ul li{
+    list-style: none;
+    overflow: hidden;
+    margin-bottom: 50px;
+    background: rgb(255,255,255);
+    padding-top: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+    /*border-top: 1px solid rgb(0,0,0);*/
+}
+.projects ul li img{
+    width: 100%;
+}
+.projects nav span {
+    /*    float: left;
+        width: 30%;*/
+}
+.prName{
+    font-weight: 600;
+    display: inline-block;
+    padding: 0 5px;
+}
+/*.projects ul{
+    text-align: center;
+}*/
+.balanceParent div{
+    /*float: right;*/
+}
+.balanceParent:after{
+    content:'';
+    clear: both;
+    display: block;
+}
+.balance{
+    margin: 10px 0 0;
+    display: block;
+    width: 100%;
+}
+
+.deducted{
+    color: rgb(48, 216, 84);
+    display: block;
+
+}
+.account ul li {
+    list-style: none;
+    padding-top: 20px;
+    background: rgb(255,255,255);
+    margin-bottom: 50px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.balanceLine{
+    padding: 0!important;
+    display: block;
+    width: 100%;
+    height: 3px;
+    /*margin: 10px 0;*/
+    margin: 10px 0;
+    float: left;
+}
+
+.projectView textarea{
+    width: 99%;
+}
+.projectView .comments{
+    padding: 0;
+}
+.projectView .comments li{
+    list-style: none;
+    overflow: hidden;
+    padding: 10px 0;
+
+}
+.userImage{
+    width: 50px!important;
+}
+.commentsImageParent{
+    float: left;
+    width: 15%;
+}
+.parentCommentBody{
+    height: 99px;
+    width: 85%; 
+    float: left;
+    position: relative;
+    /*padding-left: 5px;*/
+}
+
+
+
+/**/
+/* For modern browsers */
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+
+/* для IE6-7 */
+.clearfix {
+    zoom: 1;
+}
+
+
+
+/**/
+
+.projectTitle{
+    display: inline-block;
+    font-weight: 700;
+    padding: 20px 10px;
+    font-size: 24px;
+}
+.titleDigital{
+    font-weight:400;
+    float: right;
+}
+
+/* Account */
+.sell{
+    color: rgb(255,255,255)!important;
+    background-color: rgb(255, 104, 104)!important;
+}
+
+.buy{
+    color: rgb(255,255,255)!important;
+    background-color: rgb(48, 216, 84)!important;
+}
+/*.Deposite{
+        background: rgb(190, 255, 169);
+}
+.Freeze{
+    background: rgb(198, 226, 255);
+}
+.Reject{
+    background: rgb(255, 196, 196);
+}*/
+/**/
+
+md-pagination-wrapper{
+    max-width:  100%;
+}
+.md-tab {
+    float: none!important;
+    width: 50%;
+    display: inline-block;
+    /*padding: 0!important;*/
+}
+
+.balanceParent{
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.balanceleft{
+    display: inline-block;
+    float: left;
+    position: relative;
+}
+.balanceright{
+    display: inline-block;
+    float: right;
+    position: relative;
+}
+.currency{
+    position: fixed;
+    /* background: rgb(99, 97, 236); */
+    background: rgb(48, 216, 84);
+    /* top: 0; */
+    /* padding: 15px; */
+    text-align: center;
+    z-index: 10;
+    color: rgb(255,255,255);
+    right: 5%;
+    bottom: 50%;
+    width: 50px;
+    opacity: 0.79;
+    border-radius: 67%;
+    font-size: 45px;
+    height: 50px;
+}
+.toolbarHeader{
+    background: rgb(238, 238, 238);
+    display: block!important;
+    text-align: center;
+    padding: 18px 0 0 0!important;
+}
+.menuLink{
+    display: block;
+    /*width: 100%;*/
+    color: rgb(88,88,88)!important;
+    /*border-bottom: 1px solid;*/
+    padding: 15px 15px !important;
+}
+.projectDesc{
+    padding: 0 10px;
+    font-size: 20px;
+    height: 45px;
+    overflow: hidden;
+    display: block;
+}
+.md-tab.md-active{
+    color: rgb(48, 216, 84)!important;
+}
+
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar{
+    color:rgb(48, 216, 84)!important;   
+    background:rgb(48, 216, 84)!important;   
+}
+.modalWindowBuy{
+    width: 100%;
+    padding: 50px 0;
+}
+.topProject nav div{
+    position: relative;
+    margin: 10px 0;
+    overflow-x: hidden;
+
+}
+.topProject nav div:before {
+    float: left;
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    white-space: nowrap;
+    content:
+        ". . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . "
+
+}
+/* Comments*/
+.commentUsername{
+    font-size: 20px;
+    padding-left: 5px;
+}
+.commenBody{
+    padding-left: 5px;
+}
+.commentDate{
+    position: absolute;
+    bottom: 0;
+    padding-left: 5px;
+}
+/*Comments END*/
+.modalBuyHeader{
+    /*background: rgb(238, 238, 238);*/
+    font-weight: 800;
+    padding-top: 10px;
+    font-size: 20px;
+}
+.points{
+    display: inline-block;
+
+}
+.points :before {
+    float: left;
+    width: 0;
+    white-space: nowrap;
+    content:
+        ". . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . "}
+
+.descBeforeBalanceLine{
+    font-size: 20px;
+    padding: 0 10px;
+    display: block;
+}
+.projectTitleParent{
+    overflow: hidden;
+}
+.tranzaction li{
+    list-style: none;
+    padding-top: 20px!important;
+    margin: 0!important;
+    background: transparent!important;
+    box-shadow: none!important;
+}
+/*md-tabs.md-default-theme md-tabs-wrapper, md-tabs md-tabs-wrapper{
+    background: rgb(255,255,255);
+}*/
+.balanceInfo{
+    padding-left: 10px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
+.balanceInfo span{
+    padding-bottom: 10px;
+    display: block;
+}
+.balanceInfo span:nth-child(2n+1){
+    color: rgb(48, 216, 84);
+} 
+.balanceInfo span:nth-child(2n+2){
+    color: rgb(105, 105, 105);
+} 
+
+md-dialog{
+        max-height: 90%!important;
+}
+

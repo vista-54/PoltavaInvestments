@@ -1,0 +1,57 @@
+
+<!--<div class="topPanel" ng-hide="isLogged">
+    <div class="userBtn" >
+        <md-button class="md-raised" ng-click="Registration()">Sign up</md-button>
+        <md-button class="md-raised" ng-click="Login()">Log in</md-button>
+    </div>
+</div>-->
+<!--<div class="mainMenu">
+    <ul>
+                <li><md-button class="md-raised" ng-click="openProjectList()">Список проектов</md-button></li>
+                <li ng-show="isLogged"><md-button  class="md-raised" ng-click="openAccount()">Личный кабинет</md-button></li>
+    </ul>
+</div>-->
+<div class="topProject" ng-show="isRecommended">
+    <div>
+        <div style="text-align: center">
+            <img src="{{project.image}}" alt="image">
+        </div>
+        <span class="projectTitle" ng-click="OpenInfo(project.id)">{{project.name}}</span>
+        <span class="projectDesc">{{project.description}}</span><br>
+        <div class="balanceLine" ng-style="line"></div>
+        <nav class="clearfix" style="padding-top: 10px">
+            <!--<span >Зібрано:<span class="titleDigital"> {{Math.ceil(project.investments * 100 / project.cost_total)}}%</span></span><br>-->
+            <div><span>Необхідно зібрати</span><span class="titleDigital"> {{project.cost_total}}&#8372;</span></div>
+            <div><span>Зібрано<span class="titleDigital"> {{(project.cost_total * Math.ceil(project.investments * 100 / project.cost_total)) / 100}}&#8372;</span></span></div>
+            <div><span>До кінця збору коштів<span class="titleDigital">{{date(project.closing_date)}} днів</span></span></div>
+            <!--<span>Дата релізу: <span class="titleDigital">{{contertToDate(project.release_date)}}</span></span><br>-->
+            <!--<span>Дата окупності: <span class="titleDigital">{{contertToDate(project.payback_period)}}</span></span><br>-->
+            <div><span>Очікуваний прибуток <span class="titleDigital">{{project.profitability}}%</span></span></div>
+        </nav>
+    </div>
+</div>
+<div class="projects" scroll>
+    <ul>
+        <li ng-repeat="project in projects" class="topProject">
+            <div style="text-align: center;padding: 20px 0 0 0;">
+                <img src="{{project.image}}" alt="image">
+            </div>
+            <span class="projectTitle" ng-click="OpenInfo(project.id)">{{project.name}}</span>
+            <span class="projectDesc">{{project.description}}</span><br>
+            <div class="balanceLine" ng-style="getLine(Math.ceil(project.investments * 100 / project.cost_total))"></div>
+            <nav>
+                <span>Необхідно зібрати:<span class="titleDigital"> {{project.cost_total}}&#8372;</span></span><br>
+                <span>Зібрано:<span class="titleDigital"> {{(project.cost_total * Math.ceil(project.investments * 100 / project.cost_total)) / 100}}&#8372;</span></span><br>
+                <span>До кінця збору коштів:<span class="titleDigital">{{date(project.closing_date)}} днів</span></span><br>
+                <!--<span>Дата релізу: <span class="titleDigital">{{contertToDate(project.release_date)}}</span></span><br>-->
+                <!--<span>Дата окупності: <span class="titleDigital">{{contertToDate(project.payback_period)}}</span></span><br>-->
+                <span>Очікуваний прибутку: <span class="titleDigital">{{project.profitability}}%</span></span><br>
+            </nav>
+            <div>
+                <button type="button" class="button btnChoose" ng-click="OpenInfo(project.id)">Детальніше
+                    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                </button>
+            </div>
+        </li>
+    </ul>
+</div>

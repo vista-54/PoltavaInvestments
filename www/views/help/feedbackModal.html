@@ -1,0 +1,20 @@
+<form name="feedBackform">
+    <div style="padding-bottom: 20px;">
+        Вибачте, щоб оримати можливість інвестувати великі суми, вам необхідно отримати статус інвестора. Процедура безкоштовна, необхідно лише підтвердження персональних даних. Для отримання статусу інвестора заповніть форму нижче.
+    </div>
+    <div class="group">
+        <input type="email" ng-model="user.email"><span class="highlight"></span><span class="bar"></span>
+        <label>Email</label>
+    </div>
+    <div class="group">
+        <input type="phone" ng-model="user.mobile"><span class="highlight"></span><span class="bar"></span>
+        <label>Phone</label>
+    </div>
+    <button type="button" class="button btnChoose"ng-click="sendFeedBack(feedBackform, user)">Відправити
+        <div class="ripples buttonRipples" ><span class="ripplesCircle"></span></div>
+    </button>
+
+</form>
+<md-button ng-click="closeDialog()" style="color: rgb(146, 140, 140);" class="md-primary">
+    Закрити
+</md-button>

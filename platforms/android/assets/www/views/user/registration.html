@@ -1,0 +1,54 @@
+<div class="registration">
+    <form name="registrationForm">
+
+        <div class="group">
+            <input  ng-model="registration.first_name"><span class="highlight"></span><span class="bar"></span>
+            <label>First Name</label>
+        </div>
+        <div class="group">
+            <input ng-model="registration.last_name"><span class="highlight"></span><span class="bar"></span>
+            <label>Last Name</label>
+        </div>
+        <div class="group">
+            <md-select ng-model="registration.gender">
+                <md-option value="0">Male</md-option>
+                <md-option value="1">Female</md-option>
+            </md-select>
+        </div>
+        <div class="group">
+            <input type="date" ng-model="registration.birthday"><span class="highlight"></span><span class="bar"></span>
+            <label></label>
+
+        </div>
+        <div class="group">
+            <input type="phone"  ng-model="registration.mobile"><span class="highlight"></span><span class="bar"></span>
+            <label>Phone number</label>
+
+        </div>
+        <div class="group">
+            <input type="email" ng-model="registration.email"><span class="highlight"></span><span class="bar"></span>
+            <label>Email</label>
+
+        </div>
+        <div class="group">
+
+            <input id="file" name="file" type="file" style="opacity:0" >
+            <label for="file">  <md-button id="uploadButton" class="md-raised md-primary btnChoose">Choose Photo </md-button></label>
+            <!--<input type="file" id="file">-->
+        </div>
+        <div class="group">
+            <input type="password" ng-model="registration.password"><span class="highlight"></span><span class="bar"></span>
+            <label>Password</label>
+        </div>
+        <div class="group">
+            <input type="password" ng-model="registration.repeat"><span class="highlight"></span><span class="bar"></span>
+            <label>Repeat password</label>
+
+        </div>
+        <button type="button" ng-disabled="registration.password !== registration.repeat" class="button btnChoose" ng-click="registrationFnc(registrationForm, registration)">Sign in
+            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+        </button>
+
+
+    </form>
+</div>
