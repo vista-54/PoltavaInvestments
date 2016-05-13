@@ -7,6 +7,11 @@ and open the template in the editor.
     Created on : 20.04.2016, 18:34:19
     Author     : Виталий
 */
+
+@font-face {
+    font-family: Roboto; /* Имя шрифта */
+    src: url(fonts/Roboto.woff); /* Путь к файлу со шрифтом */
+}
 a,span{
     outline: none;
 }
