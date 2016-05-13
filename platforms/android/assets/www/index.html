@@ -14,14 +14,18 @@ and open the template in the editor.
 
     </head>
     <body>
-        <header style="text-align: center;position: relative; background: rgb(255,255,255); padding: 22px 0;padding: 20px 0; box-shadow: 0 0 10px rgba(0,0,0,0.5);"  >
+        <header style="text-align: center;position: relative; background: rgb(255,255,255);padding: 20px 0;box-shadow: 0 0 10px rgba(0,0,0,0.5);"  >
             <a href="#/" ><img style=" width: 15%;" alt="logo" src="img/logo.png"></a>
-            <span class="balanceInfo" style="float: left;" ng-show="$root.headers">
-                <span>{{$root.headers.balance}}&#8372;</span>
-                <span>{{$root.headers.deducted}}&#8372;</span>
 
-            </span>
-            <div class="balanceLine"  style="background:{{$root.headers.line.background}}"></div>
+            <div class="parentBalanceLine" style="overflow: hidden">
+                <div class="balanceLine"  style="background:{{$root.headers.line.background}}"></div>
+                <span class="balanceInfo" ng-show="$root.headers">
+                    <span >{{$root.headers.balance}}&#8372;</span>
+                    <span >{{$root.headers.deducted}}&#8372;</span>
+
+                </span>
+            </div>
+
 
             <img style="position: absolute;height: 50px;right: 0;top: 26px;" alt="menu" src="img/ic_menu_black_18px.svg"  ng-click="toggleRight()">
             <!--            <div class="balanceLine" style="margin: 20px 0;" ng-style="line"></div>-->
@@ -37,13 +41,14 @@ and open the template in the editor.
                     <a ng-hide="isLogged" class="menuLink" ng-click="Registration()">Реєстрація</a>
                     <a ng-hide="isLogged" class="menuLink" ng-click="Login()">Авторизація</a>
                     <a ng-show="isLogged" class="menuLink" ng-click="openAccount()">Особистий кабінет</a>
-                    <!--<a class="menuLink" ng-click="openProjectList()">Список проектів</a>-->
+                    <a href="#/" class="menuLink" >Список проектів</a>
+                    <a ng-show="isLogged" ng-click="$root.logout()" class="menuLink" >Вийти</a>
                 </md-content>
             </md-sidenav>
         </section>
     </div>
     <footer>
-        PoltavaInvestments &copy; 2016
+        Poltava Investments &copy; 2016
     </footer>
 
 

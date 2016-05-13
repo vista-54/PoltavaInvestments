@@ -148,9 +148,9 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
         else {
             isRecommended = false;
         }
-        $scope.project = result;
-        $scope.project.percent = Math.ceil($scope.project.investments * 100 / $scope.project.cost_total);
-        $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 163, 234, 108) ' + (100 - $scope.project.percent) + '%, rgb(47, 224, 44)' + (100 - $scope.project.percent) + '%)'};
+        $scope.projectRec = result;
+        $scope.projectRec.percent = Math.ceil($scope.projectRec.investments * 100 / $scope.projectRec.cost_total);
+        $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 163, 234, 108) ' + (100 - $scope.projectRec.percent) + '%, rgb(47, 224, 44)' + (100 - $scope.projectRec.percent) + '%)'};
         console.log(result);
         $scope.date = $rootScope.date;
         $scope.contertToDate = $rootScope.contertToDate;
@@ -261,7 +261,11 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
     $scope.getList($scope.data);
 
     /*Project List END*/
+    $rootScope.logout = function () {
+        window.location='#/';
+        window.location.reload();
 
+    };
 }
 
 

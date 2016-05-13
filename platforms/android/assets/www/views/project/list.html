@@ -7,15 +7,23 @@
             <span class="projectTitle" ng-click="OpenInfo(project.id)">{{project.name}}</span>
             <span class="projectDesc">{{project.description}}</span><br>
             <div class="balanceLine" ng-style="getLine(Math.ceil(project.investments * 100 / project.cost_total))"></div>
+            <!--            <nav>
+                            <span>Необхідно зібрати:<span class="titleDigital"> {{project.cost_total}}&#8372;</span></span><br>
+                            <span>Зібрано:<span class="titleDigital"> {{(project.cost_total * Math.ceil(project.investments * 100 / project.cost_total)) / 100}}&#8372;</span></span><br>
+                            <span>До кінця збору коштів:<span class="titleDigital">{{date(project.closing_date)}} днів</span></span><br>
+                            <span>Дата релізу: <span class="titleDigital">{{contertToDate(project.release_date)}}</span></span><br>
+                            <span>Дата окупності: <span class="titleDigital">{{contertToDate(project.payback_period)}}</span></span><br>
+                            <span>Очікуваний прибутку: <span class="titleDigital">{{project.profitability}}%</span></span><br>
+                        </nav>-->
             <nav>
-                <span>Необхідно зібрати:<span class="titleDigital"> {{project.cost_total}}&#8372;</span></span><br>
-                <span>Зібрано:<span class="titleDigital"> {{(project.cost_total * Math.ceil(project.investments * 100 / project.cost_total)) / 100}}&#8372;</span></span><br>
-                <span>До кінця збору коштів:<span class="titleDigital">{{date(project.closing_date)}} днів</span></span><br>
+                <div><span>Необхідно зібрати:<span class="titleDigital"> {{project.cost_total}}&#8372;</span></span></div>
+                <div><span>Зібрано:<span class="titleDigital"> {{(project.cost_total * Math.ceil(project.investments * 100 / project.cost_total)) / 100}}&#8372;</span></span></div>
+                <div><span>До кінця збору коштів:<span class="titleDigital">{{date(project.closing_date)}} днів</span></span></div>
                 <!--<span>Дата релізу: <span class="titleDigital">{{contertToDate(project.release_date)}}</span></span><br>-->
                 <!--<span>Дата окупності: <span class="titleDigital">{{contertToDate(project.payback_period)}}</span></span><br>-->
-                <span>Очікуваний прибутку: <span class="titleDigital">{{project.profitability}}%</span></span><br>
+                <div><span>Очікуваний прибуток: <span class="titleDigital">{{project.profitability}}%</span></span></div>
             </nav>
-            <div>
+            <div class="btnParrentBlock">
                 <button type="button" class="button btnChoose" ng-click="OpenInfo(project.id)">Детальніше
                     <div  class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
                 </button>

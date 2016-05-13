@@ -10,7 +10,11 @@
 
     <span ng-show="isLogged" class="currency" ng-click="openModal(this.project.name, this.project.remained_parts, this.project.id, $event)">&#8372;</span>
     <div class="descBeforeBalanceLine">{{project.description}}</div><br>
-    <div class="balanceLine" ng-style="line"></div>
+
+    <div class="parentBalanceLine">
+        <div class="balanceLine" ng-style="line"></div> 
+    </div>
+
     <md-tabs md-dynamic-height style="width: 100%">
         <md-tab label="Детальніше">
 
@@ -25,11 +29,11 @@
                     <!--<span>Дата окупності: <span class="titleDigital">{{contertToDate(project.payback_period)}}</span></span><br>-->
                     <div><span>Очікуваний прибуток: <span class="titleDigital">{{project.profitability}}%</span></span></div>
                 </nav>
-<!--                <div>
-                    <a href="list.html"></a>
-                    <input style="    width: 46%;display: inline;" ng-model="part" type="number" min="0" max="{{project.quantity_share}}">
-                    <md-button style="    display: inline-block;" class="md-raised buy" ng-click="buy(part, this.project.id)">Придбати</md-button>
-                </div>-->
+                <!--                <div>
+                                    <a href="list.html"></a>
+                                    <input style="    width: 46%;display: inline;" ng-model="part" type="number" min="0" max="{{project.quantity_share}}">
+                                    <md-button style="    display: inline-block;" class="md-raised buy" ng-click="buy(part, this.project.id)">Придбати</md-button>
+                                </div>-->
             </div>
         </md-tab>
         <md-tab label="Коментарі" ng-click="loadComments()" >
@@ -64,9 +68,12 @@
                     <strong>Ваш комментарий:</strong>
 
                     <textarea ng-model="comment"></textarea>
-                    <button type="button" class="button btnChoose"ng-click="sendComment(comment, project.id)">Отправить
-                        <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
-                    </button>
+                    <div class="btnParrentBlock">
+                        <button type="button" class="button btnChoose"ng-click="sendComment(comment, project.id)">Отправить
+                            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                        </button> 
+                    </div>
+
                 </div>
             </div>
         </md-tab>
