@@ -42,6 +42,7 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
         $http.post($rootScope.mainUrl + 'comment/create?access-token=' + $rootScope.userData.auth_key, data)
                 .success(function (result) {
                     console.log(result);
+                    $scope.comment='';
                     $scope.loadComments();
                 })
                 .error(function (error) {
