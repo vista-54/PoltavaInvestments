@@ -72,6 +72,10 @@ form {
     margin-bottom: 45px; 
 }
 
+.checkbox label {
+    position: static;
+}
+
 input {
     font-size: 18px;
     padding: 10px 10px 10px 5px;
@@ -83,6 +87,16 @@ input {
     border: none;
     border-radius: 0;
     border-bottom: 1px solid #757575;
+}
+
+.checkbox label {
+    pointer-events: all;
+}
+
+input[type=checkbox] {
+    -webkit-appearance: checkbox;
+    display: inline-block;
+    width: auto;
 }
 
 input:focus { outline: none;border: 0 }
@@ -109,7 +123,9 @@ input:focus ~ label, input.used ~ label {
     transform: scale(.75); left: -2px;
     /* font-size: 14px; */
     color: rgb(67, 195, 42);
-
+}
+input:checked ~ label {
+    color: rgb(67, 195, 42);
 }
 
 
@@ -288,6 +304,7 @@ footer img:focus , footer a:focus { outline: none; }
 
     background: rgb(255,255,255);
     margin: 20px 0;
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
 }
 .topProject img{
     width: 100%;
@@ -296,6 +313,10 @@ footer img:focus , footer a:focus { outline: none; }
 .topProject nav{
     padding: 10px;
     overflow-x: hidden;
+}
+
+.projects {
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
 }
 
 .topProject nav span{
@@ -686,3 +707,20 @@ md-dialog{
     color: rgb(167, 204, 174);
 }
 /*LOGIN FORM END*/
+
+.back-button {
+    font-size: 40px!important;
+    cursor: pointer;
+    position: absolute;
+    left: 4vh;
+    top: 40%;
+    -webkit-transition: color 0.3s;
+    -moz-transition: color 0.3s;
+    -ms-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+.back-button:hover {
+    color: rgb(167, 204, 174);
+}
