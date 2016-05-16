@@ -107,6 +107,7 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
     };
     $scope.openProjectList = $rootScope.openProjectList;
     $scope.openAccount = $rootScope.openAccount;
+    
     /*Global functions START*/
     $rootScope.mainUrl = 'http://invest.skrygroup.com/backend/api/web/v1/';
 //    $rootScope.mainUrl = 'http://poltavainvestment.com/backend/api/web/v1/';
