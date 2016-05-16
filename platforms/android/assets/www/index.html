@@ -38,9 +38,9 @@ and open the template in the editor.
                     <h1 class="md-toolbar-tools toolbarHeader">Меню</h1>
                 </md-toolbar>
                 <md-content  layout-padding style="padding: 0; font-size: 20px;">
-                    <a ng-hide="isLogged" class="menuLink" ng-click="Registration()">Реєстрація</a>
+                    <!--<a ng-hide="isLogged" class="menuLink" ng-click="Registration()">Реєстрація</a>-->
                     <a ng-hide="isLogged" class="menuLink" ng-click="Login()">Авторизація</a>
-                    <a ng-show="isLogged" class="menuLink" ng-click="openAccount()">Особистий кабінет</a>
+                    <a ng-show="isLogged" class="menuLink" ng-click="openAccount()">Мої інвестиції</a>
                     <a href="#/" class="menuLink" >Список проектів</a>
                     <a ng-show="isLogged" ng-click="$root.logout()" class="menuLink" >Вийти</a>
                 </md-content>
