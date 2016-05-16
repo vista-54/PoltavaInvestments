@@ -40,7 +40,8 @@ a,span{
 /* LOGIN FORM*/
 body {
     /*font-family: Roboto,sans-serif,"Helvetica Neue";*/
-    background: rgb(253, 249, 249);
+    background: rgba(212, 212, 212,0.49);
+    
     /*-webkit-font-smoothing: antialiased;*/
     min-height: 100%!important;
     height: auto!important;
