@@ -41,7 +41,7 @@ a,span{
 body {
     /*font-family: Roboto,sans-serif,"Helvetica Neue";*/
     background: rgba(212, 212, 212,0.49);
-    
+
     /*-webkit-font-smoothing: antialiased;*/
     min-height: 100%!important;
     height: auto!important;
@@ -285,8 +285,9 @@ footer img:focus , footer a:focus { outline: none; }
 /*LoginForm END*/
 .topProject{
     /*padding: 20px 15px;*/
+
     background: rgb(255,255,255);
-    margin: 50px 0;
+    margin: 20px 0;
 }
 .topProject img{
     width: 100%;
@@ -342,6 +343,7 @@ header a{
 
 .projectView{
     /*padding: 0 10px 0 10px;*/
+    background: rgb(255,255,255);
 }
 .projects ul{
     padding: 0;
@@ -630,6 +632,7 @@ md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar{
     font-size: 20px;
     padding: 0 10px;
     display: block;
+    line-height: 1.5;
 }
 .projectTitleParent{
     overflow: hidden;

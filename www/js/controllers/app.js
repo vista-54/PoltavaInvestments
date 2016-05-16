@@ -109,6 +109,7 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
     $scope.openAccount = $rootScope.openAccount;
     /*Global functions START*/
     $rootScope.mainUrl = 'http://invest.skrygroup.com/backend/api/web/v1/';
+//    $rootScope.mainUrl = 'http://poltavainvestment.com/backend/api/web/v1/';
     /*Convert timestamp to Date custom format*/
     $rootScope.contertToDate = function (date, param) {
         //param -> time = date&time
