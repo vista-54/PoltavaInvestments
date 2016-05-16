@@ -289,7 +289,7 @@ footer img:focus , footer a:focus { outline: none; }
 }
 .topProject img{
     width: 100%;
-        padding: 20px 0 0 0;
+    padding: 20px 0 0 0;
 }
 .topProject nav{
     padding: 10px;
@@ -319,7 +319,9 @@ footer img:focus , footer a:focus { outline: none; }
     text-align: center;
 }
 .btnChoose{
-    background: rgb(48, 216, 84)!important;
+    margin-top: 20px;
+    /*background: rgb(48, 216, 84)!important;*/
+    background: rgb(167, 204, 174)!important;
     width: 50%;
 }
 .author{
@@ -523,7 +525,7 @@ md-pagination-wrapper{
 .currency{
     position: fixed;
     /* background: rgb(99, 97, 236); */
-    background: rgb(48, 216, 84);
+    background: rgb(167, 204, 174);
     /* top: 0; */
     /* padding: 15px; */
     text-align: center;
@@ -559,12 +561,12 @@ md-pagination-wrapper{
     display: block;
 }
 .md-tab.md-active{
-    color: rgb(48, 216, 84)!important;
+    color: rgb(167,204,174)!important;
 }
 
 md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar{
-    color:rgb(48, 216, 84)!important;   
-    background:rgb(48, 216, 84)!important;   
+    color: rgb(167, 204, 174)!important;
+    background: rgb(167, 204, 174)!important;
 }
 .modalWindowBuy{
     width: 100%;
@@ -653,7 +655,8 @@ md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar{
     display: block;
 }
 .balanceInfo span:nth-child(2n+1){
-    color: rgb(48, 216, 84);
+    color: rgb(167, 204, 174);
+    /*color: rgb(48, 216, 84);*/
     float: left;
 } 
 .balanceInfo span:nth-child(2n+2){
@@ -670,3 +673,12 @@ md-dialog{
     display: block;
     text-align: center;
 }
+
+/*LOGIN FORM START*/
+.login{
+    margin-top: 50px;
+}
+.login a{
+    color: rgb(167, 204, 174);
+}
+/*LOGIN FORM END*/

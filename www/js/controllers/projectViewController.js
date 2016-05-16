@@ -54,7 +54,7 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
             console.log(result);
             $scope.project = result;
             var red = Math.ceil($scope.project.investments * 100 / $scope.project.cost_total);
-            $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 218, 206, 206) ' + (100 - red) + '%, rgb(48, 216, 84)' + (100 - red) + '%)'};
+            $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 218, 206, 206) ' + (100 - red) + '%, rgb(167, 204, 174)' + (100 - red) + '%)'};
 //            $scope.project.release_date = new Date(result.release_date).getHours();
             $scope.Math = $rootScope.Math;
             $scope.date = $rootScope.date;

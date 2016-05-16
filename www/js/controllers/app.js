@@ -150,7 +150,7 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
         }
         $scope.projectRec = result;
         $scope.projectRec.percent = Math.ceil($scope.projectRec.investments * 100 / $scope.projectRec.cost_total);
-        $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 163, 234, 108) ' + (100 - $scope.projectRec.percent) + '%, rgb(47, 224, 44)' + (100 - $scope.projectRec.percent) + '%)'};
+        $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 163, 234, 108) ' + (100 - $scope.projectRec.percent) + '%, rgb(167, 204, 174);' + (100 - $scope.projectRec.percent) + '%)'};
         console.log(result);
         $scope.date = $rootScope.date;
         $scope.contertToDate = $rootScope.contertToDate;
@@ -219,7 +219,7 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
     $scope.toggleRight = $rootScope.toggleRight;
     $scope.isOpenRight = $rootScope.isOpenRight;
     $scope.getLine = function (percent) {
-        return    $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 163, 234, 108) ' + (100 - percent) + '%, rgb(47, 224, 44)' + (100 - percent) + '%)'};
+        return    $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 163, 234, 108) ' + (100 - percent) + '%, rgb(167, 204, 174)' + (100 - percent) + '%)'};
 
     };
     $scope.Math = $rootScope.Math;

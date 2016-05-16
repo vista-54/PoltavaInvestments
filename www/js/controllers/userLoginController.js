@@ -22,7 +22,7 @@ function userLoginController($scope, $rootScope, $http) {
                         $rootScope.userData = result;
                         $rootScope.isLogged = true;
                         var red = (result.deducted * 100) / (parseFloat(result.balance) + parseFloat(result.deducted));
-                        $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 218, 206, 206) ' + red + '%, rgb(48, 216, 84)' + red + '%)'};
+                        $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 218, 206, 206) ' + red + '%, rgb(167, 204, 174)' + red + '%)'};
                         //Blobal data in a header app
 
                         $rootScope.headers = {
