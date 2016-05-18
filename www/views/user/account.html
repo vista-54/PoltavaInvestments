@@ -33,11 +33,11 @@
                             <tr><th>Дата</th><th>Тип</th><th>Сумма</th><th>Проект</th></tr>
                             <tr ng-repeat="tranzaction in tranzactions" ><td>{{tranzaction.date}}</td><td>{{tranzaction.id_type}}</td><td>{{tranzaction.sum}}</td><td>{{tranzaction.id_project}}</td></tr>
                         </table>-->
-
+                            
             <ul style="padding: 0 10px;" class="tranzaction">
                 <li ng-repeat="tranzaction in tranzactions">
                     <span style="color: rgb(171, 158, 158); ">{{contertToDate(tranzaction.date)}} </span><br>
-                    <span style="font-size: 20px;font-weight: 500">{{tranzaction.id_type==='Deposite'?'Поповнено рахунок на суму '+tranzaction.sum+'$':(tranzaction.id_type==='Freeze'?'Утримано за проект '+tranzaction.id_project+' '+tranzaction.sum +'$':'Повернено з проекту '+tranzaction.id_project+' '+tranzaction.sum+'$')}}</span>
+                    <span style="font-size: 20px;font-weight: 500">{{tranzaction.id_type==='Deposite'?'Поповнено рахунок на суму '+tranzaction.sum+'$':(tranzaction.id_type==='Freeze'?'Інвестовано в проект '+tranzaction.id_project+' '+tranzaction.sum +'$':'Повернено з проекту '+tranzaction.id_project+' '+tranzaction.sum+'$')}}</span>
                     <!--<span class="projectTitle">{{tranzaction.id_project}}</span>tranzaction.id_type==='Freeze'?'Утримано за проект' tranzaction.id_project:'Повернено з проекту:'tranzaction.id_project-->
                     <!--<div>{{tranzaction.date}} <span class="titleDigital">{{tranzaction.sum}}$</span> {{tranzaction.id_type}}</div>-->
                 </li>
