@@ -40,7 +40,8 @@ a,span{
 /* LOGIN FORM*/
 body {
     /*font-family: Roboto,sans-serif,"Helvetica Neue";*/
-    background: rgb(253, 249, 249);
+    background: rgba(212, 212, 212,0.49);
+
     /*-webkit-font-smoothing: antialiased;*/
     min-height: 100%!important;
     height: auto!important;
@@ -71,6 +72,10 @@ form {
     margin-bottom: 45px; 
 }
 
+.checkbox label {
+    position: static;
+}
+
 input {
     font-size: 18px;
     padding: 10px 10px 10px 5px;
@@ -82,6 +87,16 @@ input {
     border: none;
     border-radius: 0;
     border-bottom: 1px solid #757575;
+}
+
+.checkbox label {
+    pointer-events: all;
+}
+
+input[type=checkbox] {
+    -webkit-appearance: checkbox;
+    display: inline-block;
+    width: auto;
 }
 
 input:focus { outline: none;border: 0 }
@@ -108,7 +123,9 @@ input:focus ~ label, input.used ~ label {
     transform: scale(.75); left: -2px;
     /* font-size: 14px; */
     color: rgb(67, 195, 42);
-
+}
+input:checked ~ label {
+    color: rgb(67, 195, 42);
 }
 
 
@@ -284,8 +301,10 @@ footer img:focus , footer a:focus { outline: none; }
 /*LoginForm END*/
 .topProject{
     /*padding: 20px 15px;*/
+
     background: rgb(255,255,255);
-    margin: 50px 0;
+    margin: 20px 0;
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
 }
 .topProject img{
     width: 100%;
@@ -294,6 +313,10 @@ footer img:focus , footer a:focus { outline: none; }
 .topProject nav{
     padding: 10px;
     overflow-x: hidden;
+}
+
+.projects {
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
 }
 
 .topProject nav span{
@@ -341,6 +364,7 @@ header a{
 
 .projectView{
     /*padding: 0 10px 0 10px;*/
+    background: rgb(255,255,255);
 }
 .projects ul{
     padding: 0;
@@ -629,6 +653,7 @@ md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar{
     font-size: 20px;
     padding: 0 10px;
     display: block;
+    line-height: 1.5;
 }
 .projectTitleParent{
     overflow: hidden;
@@ -682,3 +707,20 @@ md-dialog{
     color: rgb(167, 204, 174);
 }
 /*LOGIN FORM END*/
+
+.back-button {
+    font-size: 40px!important;
+    cursor: pointer;
+    position: absolute;
+    left: 4vh;
+    top: 40%;
+    -webkit-transition: color 0.3s;
+    -moz-transition: color 0.3s;
+    -ms-transition: color 0.3s;
+    -o-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+.back-button:hover {
+    color: rgb(167, 204, 174);
+}

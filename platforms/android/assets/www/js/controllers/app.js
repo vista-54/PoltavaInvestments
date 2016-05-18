@@ -52,6 +52,7 @@ app.controller('appController', appController);
 
 
 function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $mdDialog) {
+    $scope.toggleRight = $rootScope.toggleRight;
     $rootScope.Login = function () {
         window.location = '#/login';
         $rootScope.close();
@@ -66,6 +67,7 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
                     $log.debug("close RIGHT is done");
                 });
     };
+    $rootScope.close();
     $rootScope.openProjectList = function () {
         window.location = '#/projectList';
         $rootScope.close();
@@ -74,7 +76,11 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
         window.location = '#/account';
         $rootScope.close();
     };
-
+    
+    $rootScope.getProjectList=function(){
+        window.location = '#/';
+        $rootScope.close();
+    };
     $rootScope.openNotInvestorModal = function (project_name, count, id, $event) {
         var parentEl = angular.element(document.body);
 
@@ -107,8 +113,10 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
     };
     $scope.openProjectList = $rootScope.openProjectList;
     $scope.openAccount = $rootScope.openAccount;
+    
     /*Global functions START*/
     $rootScope.mainUrl = 'http://invest.skrygroup.com/backend/api/web/v1/';
+//    $rootScope.mainUrl = 'http://poltavainvestment.com/backend/api/web/v1/';
     /*Convert timestamp to Date custom format*/
     $rootScope.contertToDate = function (date, param) {
         //param -> time = date&time
@@ -167,6 +175,7 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
     /*Menu START*/
     $scope.Login = $rootScope.Login;
     $scope.Registration = $rootScope.Registration;
+    $scope.getProjectList=$rootScope.getProjectList;
 
     /**
      * Supplies a function that will continue to operate until the

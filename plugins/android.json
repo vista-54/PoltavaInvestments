@@ -9,11 +9,11 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -22,24 +22,16 @@
             "AndroidManifest.xml": {
                 "parents": {
                     "/manifest": [],
-                    "/*": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-                            "count": 1
-                        }
-                    ]
+                    "/*": []
                 }
             }
         }
     },
     "installed_plugins": {
-        "cordova-plugin-console": {
+        "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.Vista.PoltavaInvestments"
         },
-        "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "com.Vista.PoltavaInvestments"
-        },
-        "cordova-plugin-device": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.Vista.PoltavaInvestments"
         }
     },

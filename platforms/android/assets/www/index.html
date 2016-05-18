@@ -11,10 +11,12 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/css.css" rel="stylesheet">
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+        <link rel="stylesheet" href="css/fonts/font-awesome-4.4.0/font-awesome/css/font-awesome.min.css">
 
     </head>
     <body>
         <header style="text-align: center;position: relative; background: rgb(255,255,255);padding: 20px 0;box-shadow: 0 0 10px rgba(0,0,0,0.5);"  >
+            <i class="back-button fa fa-angle-left " aria-hidden="true"></i>
             <a href="#/" ><img style=" width: 15%;" alt="logo" src="img/logo.png"></a>
 
             <div class="parentBalanceLine" style="overflow: hidden">
@@ -41,7 +43,7 @@ and open the template in the editor.
                     <!--<a ng-hide="isLogged" class="menuLink" ng-click="Registration()">Реєстрація</a>-->
                     <a ng-hide="isLogged" class="menuLink" ng-click="Login()">Авторизація</a>
                     <a ng-show="isLogged" class="menuLink" ng-click="openAccount()">Мої інвестиції</a>
-                    <a href="#/" class="menuLink" >Список проектів</a>
+                    <a ng-click="getProjectList()" class="menuLink" >Список проектів</a>
                     <a ng-show="isLogged" ng-click="$root.logout()" class="menuLink" >Вийти</a>
                 </md-content>
             </md-sidenav>
@@ -61,6 +63,7 @@ and open the template in the editor.
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+    <script src="js/libs/jq/jquery.min.js"></script>
     <script src="js/controllers/app.js"></script>
     <script src="js/controllers/userLoginController.js"></script>
     <script src="js/controllers/userRegistrationController.js"></script>
