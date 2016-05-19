@@ -22,7 +22,7 @@
                     <span>Акцій:{{project.my_quantity}}</span>
                     <span>Вартість:{{project.cost}}</span>
                     <div ng-show="{{comparison(project.last_payment_date)}}" style="margin-top:10px;overflow: hidden;padding: 0 0 10px 0;">
-                        <input style="display: inline-block;width: 30%;" ng-model="account.my_quantity" min="0" value="{{project.my_quantity/10>1?10:1}}"  type="number"><div style="float: right;"><md-button style="    display: inline-block;" class="md-raised buy" ng-click="buy(account, project.id)">Придбати</md-button><md-button style="    display: inline-block;" class="md-raised sell" ng-click="sell(account, project.id)">Продати</md-button></div>
+                        <input style="display: inline-block;width: 30%;" ng-model="account.my_quantity" min="0" value="{{project.my_quantity/10>1?account.my_quantity=10:account.my_quantity=1}}"  type="number"><div style="float: right;"><md-button style="    display: inline-block;" class="md-raised buy" ng-click="buy(account, project.id)">Придбати</md-button><md-button style="    display: inline-block;" class="md-raised sell" ng-click="sell(account, project.id)">Продати</md-button></div>
                     </div>
                 </li>
             </ul>
@@ -37,7 +37,7 @@
             <ul style="padding: 0 10px;" class="tranzaction">
                 <li ng-repeat="tranzaction in tranzactions">
                     <span style="color: rgb(171, 158, 158); ">{{contertToDate(tranzaction.date)}} </span><br>
-                    <span style="font-size: 20px;font-weight: 500">{{tranzaction.id_type==='Deposite'?'Поповнено рахунок на суму '+tranzaction.sum+'$':(tranzaction.id_type==='Freeze'?'Інвестовано в проект '+tranzaction.id_project+' '+tranzaction.sum +'$':'Повернено з проекту '+tranzaction.id_project+' '+tranzaction.sum+'$')}}</span>
+                    <span style="font-size: 20px;font-weight: 500">{{tranzaction.id_type==='Deposite'?'Поповнено рахунок на суму '+tranzaction.sum+'&#8372;':(tranzaction.id_type==='Freeze'?'Інвестовано в проект '+tranzaction.id_project+' '+tranzaction.sum +'&#8372;':'Повернено з проекту '+tranzaction.id_project+' '+tranzaction.sum+'&#8372;')}}</span>
                     <!--<span class="projectTitle">{{tranzaction.id_project}}</span>tranzaction.id_type==='Freeze'?'Утримано за проект' tranzaction.id_project:'Повернено з проекту:'tranzaction.id_project-->
                     <!--<div>{{tranzaction.date}} <span class="titleDigital">{{tranzaction.sum}}$</span> {{tranzaction.id_type}}</div>-->
                 </li>
