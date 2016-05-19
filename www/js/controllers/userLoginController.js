@@ -7,8 +7,9 @@
 
 app.controller('userLoginController', userLoginController);
 
-function userLoginController($scope, $rootScope, $http) {
-        /**/
+function userLoginController($scope, $rootScope, $http, $localStorage) {
+    /**/
+
     $(window, document, undefined).ready(function () {
 
         $('input').blur(function () {
@@ -44,7 +45,24 @@ function userLoginController($scope, $rootScope, $http) {
         });
 
     });
+    $scope.user = {};
+    if ($localStorage.remember) {
+        $scope.user.login = $localStorage.login;
+        $scope.user.password = $localStorage.password;
+        $scope.user.remember = $localStorage.remember;
+        $('input').addClass('used');
+    }
     $scope.login = function (form, user) {
+
+        if (user.remember) {
+            console.log(user.remember);
+            $localStorage.login = user.login;
+            $localStorage.password = user.password;
+            $localStorage.remember = true;
+        } else {
+            $localStorage.remember = false;
+        }
+
         if (form.$valid) {
             console.log(user);
             var data = {
@@ -55,24 +73,32 @@ function userLoginController($scope, $rootScope, $http) {
             };
             $http.post($rootScope.mainUrl + 'site/login', data, {'Content-Type': 'application/json;charset=UTF-8'})
                     .success(function (result) {
-                        $rootScope.userData = result;
-                        $rootScope.isLogged = true;
-                        var red = (result.deducted * 100) / (parseFloat(result.balance) + parseFloat(result.deducted));
-                        $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 218, 206, 206) ' + red + '%, rgb(167, 204, 174)' + red + '%)'};
-                        //Blobal data in a header app
+                        if (typeof result.error === 'undefined') {
+                            $rootScope.userData = result;
+                            $rootScope.isLogged = true;
+                            var red = (result.deducted * 100) / (parseFloat(result.balance) + parseFloat(result.deducted));
+                            $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 218, 206, 206) ' + red + '%, rgb(167, 204, 174)' + red + '%)'};
+                            //Global data in a header app
 
-                        $rootScope.headers = {
-                            balance: result.balance,
-                            deducted: result.deducted,
-                            line: $scope.line
-                        };
-                        window.localStorage['isLogged'] = true;
-                        window.location = '#/';
-                        console.log($rootScope.userData);
+                            $rootScope.headers = {
+                                balance: result.balance,
+                                deducted: result.deducted,
+                                line: $scope.line
+                            };
+                            $localStorage.isLogged = true;
+                            window.location = '#/';
+                            console.log($rootScope.userData);
+                        }
+                        else{
+                            $scope.errorMsg='Невірний логін або пароль';
+                        }
+
+
                     })
                     .error(function (error) {
                         console.log(error);
                     });
         }
-    };
+    }
+    ;
 }
