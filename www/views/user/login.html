@@ -3,10 +3,16 @@
         <div class="group">
             <input type="email" name="email" ng-model="user.login" required><span class="highlight"></span><span class="bar"></span>
             <label>Email</label>
+            <div class="errMsg">
+                {{loginform.email.$touched ? (loginform.name.$valid ? '' : 'Поле заповнене не коректно') : ''}}
+            </div>
         </div>
         <div class="group">
-            <input type="password" ng-model="user.password" required><span class="highlight"></span><span class="bar"></span>
+            <input type="password" ng-model="user.password" name="password" required><span class="highlight"></span><span class="bar"></span>
             <label>Password</label>
+              <div class="errMsg">
+                {{loginform.password.$touched ? (loginform.password.$valid ? '' : 'Поле заповнене не коректно') : ''}}
+            </div>
         </div>
         <div class="errMsg">
             {{errorMsg}}
@@ -15,7 +21,7 @@
             <input type="checkbox" id="rememberMe" name="rememberMe" ng-model="user.remember" >
             <label for="rememberMe">Remember me</label>
         </div>
-        
+
         <div style="text-align: center;">
             <a href="#/registration">Реєстрація</a>
         </div>
