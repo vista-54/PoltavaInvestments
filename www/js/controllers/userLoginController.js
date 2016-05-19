@@ -48,10 +48,10 @@ function userLoginController($scope, $rootScope, $http) {
         if (form.$valid) {
             console.log(user);
             var data = {
-//                email: user.login,
-                email: 'vista545457@gmail.com',
-//                password: user.password
-                password: '111111'
+                email: user.login,
+//                email: 'vista545457@gmail.com',
+                password: user.password
+//                password: '111111'
             };
             $http.post($rootScope.mainUrl + 'site/login', data, {'Content-Type': 'application/json;charset=UTF-8'})
                     .success(function (result) {
