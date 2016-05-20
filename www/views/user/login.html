@@ -4,7 +4,7 @@
             <input type="email" name="email" ng-model="user.login" required><span class="highlight"></span><span class="bar"></span>
             <label>Email</label>
             <div class="errMsg">
-                {{loginform.email.$touched ? (loginform.name.$valid ? '' : 'Поле заповнене не коректно') : ''}}
+                {{loginform.email.$touched ? (loginform.email.$valid ? '' : 'Поле заповнене не коректно') : ''}}
             </div>
         </div>
         <div class="group">

@@ -41,7 +41,7 @@
 
         </div>
         <div class="group">
-            <input  type="email" ng-model="registration.email" name="email" required ng-pattern="/^([a-zA-ZА-Яа-я0-9ЇїёЁіІ])*$/"><span class="highlight"></span><span class="bar"></span>
+            <input  type="email" ng-model="registration.email" name="email" required ><span class="highlight"></span><span class="bar"></span>
             <label>Ел. пошта</label>
             <div class="errMsg">
                 {{registrationForm.email.$touched ? (registrationForm.email.$valid ? '' : 'Поле заповнене не коректно') : ''}}
