@@ -42,7 +42,7 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
         $http.post($rootScope.mainUrl + 'comment/create?access-token=' + $rootScope.userData.auth_key, data)
                 .success(function (result) {
                     console.log(result);
-                    $scope.comment='';
+                    $scope.comment = '';
                     $scope.loadComments();
                 })
                 .error(function (error) {
@@ -59,7 +59,11 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
             $scope.Math = $rootScope.Math;
             $scope.date = $rootScope.date;
             $scope.contertToDate = $rootScope.contertToDate;
-            
+            $rootScope.headers.balance = result.my_balance.balance;
+            $rootScope.headers.deducted = result.my_balance.deducted;
+            if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest')
+                $scope.$apply();
+
         }).error(function (error) {
             console.log(error);
         });
@@ -77,7 +81,7 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
                     '<md-dialog style="width:100%;padding: 0 23px;" aria-label="List dialog">' +
                     '<div class=modalBuyHeader>' + project_name + '</div>' +
                     '  <md-dialog-content class=modalWindowBuy>' +
-                    'Скільки акцій бажаєте придбати?' +
+                    'Скільки акцій бажаєте придбати?(доступно' + count + ')' +
                     ' <br><input type="number" ng-init="c=0" min=0 max="' + count + '"ng-model="c" >' +
                     '  </md-dialog-content>' +
                     '  <md-dialog-actions>' +
@@ -98,7 +102,7 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
 
     };
 
-    
+
 //    function DialogController($scope, $mdDialog, items) {
 //    $scope.items = items;
     $scope.closeDialog = function () {
@@ -113,10 +117,16 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
         };
         $http.put($rootScope.mainUrl + 'project/buy-part-project?access-token=' + $rootScope.userData.auth_key, data)
                 .success(function (result) {
-                    $scope.view(id);
-                    $scope.closeDialog();
-                    if(result==="NOT_INVESTOR"){
-                         $rootScope.openNotInvestorModal();
+                    if (typeof result.error === 'undefined') {
+                        alert(data.quantity_share + ' акцій успішно придбано');
+                        $scope.view(id);
+                        $scope.closeDialog();
+                    }
+                    else {
+                        alert(result.error);
+                    }
+                    if (result === "NOT_INVESTOR") {
+                        $rootScope.openNotInvestorModal();
                     }
                 })
                 .error(function (error) {

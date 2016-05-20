@@ -35,11 +35,14 @@ function accountController($scope, $rootScope, $http) {
     $scope.getList = function () {
         $http.get($rootScope.mainUrl + 'project/view-my-investment?default_page_size=' + $scope.data.size + '&order_attr=' + $scope.data.order_attr + '&sort=' + $scope.data.sort + '&page=' + $scope.data.page + '&access-token=' + $rootScope.userData.auth_key)
                 .success(function (result) {
-                   
+
                     console.log(result);
                     $scope.projects = $scope.projects.concat(result.my_projects.result);
                     $scope.balance = result.my_balance;
-                   
+                    $rootScope.headers.balance = result.my_balance.balance;
+                    $rootScope.headers.deducted = result.my_balance.deducted;
+
+
                     $scope.data.page++;
                     if ($scope.data.page <= result.my_projects.pages) {
                         $scope.LoadMoreProjects = true;
@@ -47,7 +50,7 @@ function accountController($scope, $rootScope, $http) {
                     else {
                         $scope.LoadMoreProjects = false;
                     }
-                 
+
                 })
                 .error(function (error) {
                     console.log(error);
@@ -61,10 +64,16 @@ function accountController($scope, $rootScope, $http) {
         };
         $http.put($rootScope.mainUrl + 'project/buy-part-project?&access-token=' + $rootScope.userData.auth_key, data)
                 .success(function (result) {
-                    if (typeof result === 'object') {
+                    if (typeof result.error === 'undefined') {
                         console.log(result);
                         $scope.getList();
+                        alert('Акції успішно продано');
 //                        $scope.transaction();
+                        if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest')
+                            $scope.$apply();
+                    }
+                    else {
+                        alert(result.error);
                     }
                 })
                 .error(function (error) {
@@ -97,8 +106,8 @@ function accountController($scope, $rootScope, $http) {
     $scope.LoadMore = true;
     $scope.transct = {
         default_page_size: 10,
-        order_attr: 'id_project',
-        sort: 'ASC',
+        order_attr: 'date',
+        sort: 'DESC',
         page: 1
     };
     $scope.tranzactions = [];
@@ -109,6 +118,7 @@ function accountController($scope, $rootScope, $http) {
                 .success(function (result) {
                     $scope.tranzactions = $scope.tranzactions.concat(result.transaction);
                     $scope.pages = result.pages;
+
                     console.log(result);
                     $scope.transct.page++;
                     if ($scope.transct.page <= $scope.pages) {

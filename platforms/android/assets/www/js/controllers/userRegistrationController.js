@@ -7,6 +7,11 @@
 
 app.controller('userRegistrationController', userRegistrationController);
 function userRegistrationController($scope, $http, $rootScope) {
+    $scope.choosePhoto = function () {
+        $('#file').click();
+    };
+    $scope.registration = {};
+    $scope.registration.gender = 7;
     $(window, document, undefined).ready(function () {
 
         $('input').blur(function () {
@@ -51,8 +56,6 @@ function userRegistrationController($scope, $http, $rootScope) {
                     'Content-Type': undefined
                 }
             };
-
-
             var fd = new FormData();
             var file = document.getElementById('file');
 //            fd=reg;
@@ -65,12 +68,16 @@ function userRegistrationController($scope, $http, $rootScope) {
 
             $http.post($rootScope.mainUrl + 'site/signup', fd, config)
                     .success(function (result) {
-                        console.log(result);
-                        window.location = '#/';
+                        if (typeof result.error === 'undefined') {
+                            console.log(result);
+                            window.location = '#/';
+                        }
+                        else{
+                            $scope.errorMsg=result;
+                        }
                     }).error(function (error) {
                 console.log(error);
             });
-
             console.log(reg);
         }
 

@@ -5,7 +5,7 @@
  */
 
 
-var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngAnimate']);
+var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngAnimate','ngStorage']);
 app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider
                 .when('/index', {
@@ -115,8 +115,8 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
     $scope.openAccount = $rootScope.openAccount;
     
     /*Global functions START*/
-    $rootScope.mainUrl = 'http://invest.skrygroup.com/backend/api/web/v1/';
-//    $rootScope.mainUrl = 'http://poltavainvestment.com/backend/api/web/v1/';
+//    $rootScope.mainUrl = 'http://invest.skrygroup.com/backend/api/web/v1/';
+    $rootScope.mainUrl = 'http://poltavainvestment.com/api/web/v1/';
     /*Convert timestamp to Date custom format*/
     $rootScope.contertToDate = function (date, param) {
         //param -> time = date&time
@@ -150,7 +150,7 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
 
     //получаем рекомендованый проект.
     $http.get($rootScope.mainUrl + 'project/view-main-recommend-project').success(function (result) {
-        if (result) {
+        if (typeof result==='object') {
             isRecommended = true;
         }
         else {
