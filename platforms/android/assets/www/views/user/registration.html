@@ -2,7 +2,7 @@
     <form name="registrationForm">        
         <div class="group">
             <input  ng-model="registration.first_name" name="name" required ng-pattern="/^([a-zA-ZА-Яа-я0-9ЇїёЁіІ])*$/" ><span class="highlight"></span><span class="bar"></span>
-            <label>Ім'я</label>
+            <label>Ім'я *</label>
             <div class="errMsg">
                 {{registrationForm.name.$touched ? (registrationForm.name.$valid ? '' : 'Поле заповнене не коректно') : ''}}
             </div>
@@ -10,13 +10,13 @@
 
         <div class="group">
             <input  ng-model="registration.last_name" name="lastname" required ng-pattern="/^([a-zA-ZА-Яа-я0-9ЇїёЁіІ])*$/"><span class="highlight"></span><span class="bar"></span>
-            <label>Прізвище</label>
+            <label>Прізвище *</label>
             <div class="errMsg">
                 {{registrationForm.lastname.$touched ? (registrationForm.lastname.$valid ? '' : 'Поле заповнене не коректно') : ''}}
             </div>
         </div>
         <div class="group">
-            <md-select  ng-model="registration.gender" name="gender" required>
+            <md-select  ng-model="registration.gender" name="gender" >
                 <md-option  value="7">Стать</md-option>
                 <md-option value="0">Чоловіча</md-option>
                 <md-option value="1">Жіноча</md-option>
@@ -26,14 +26,14 @@
             </div>
         </div>
         <div class="group">
-            <input  type="date" ng-model="registration.birthday" name="birthday" required><span class="highlight"></span><span class="bar"></span>
-            <label>Дата народження</label>
+            <input  type="date" ng-model="registration.birthday" name="birthday" ><span class="highlight"></span><span class="bar"></span>
+            <label>Дата народження </label>
             <div class="errMsg">
                 {{registrationForm.birthday.$touched ? (registrationForm.birthday.$valid ? '' : 'Поле заповнене не коректно') : ''}}
             </div>
         </div>
         <div class="group">
-            <input type="phone"  ng-model="registration.mobile" name="phone" required ng-pattern="/^([a-zA-ZА-Яа-я0-9ЇїёЁіІ])*$/"><span class="highlight"></span><span class="bar"></span>
+            <input type="phone"  ng-model="registration.mobile"  name="phone"   ng-pattern="/^([0-9+r])*$/"><span class="highlight"></span><span class="bar"></span>
             <label>Телефон</label>
             <div class="errMsg">
                 {{registrationForm.phone.$touched ? (registrationForm.phone.$valid ? '' : 'Поле заповнене не коректно') : ''}}
@@ -42,7 +42,7 @@
         </div>
         <div class="group">
             <input  type="email" ng-model="registration.email" name="email" required ><span class="highlight"></span><span class="bar"></span>
-            <label>Ел. пошта</label>
+            <label>Ел. пошта *</label>
             <div class="errMsg">
                 {{registrationForm.email.$touched ? (registrationForm.email.$valid ? '' : 'Поле заповнене не коректно') : ''}}
             </div>
@@ -58,16 +58,16 @@
         </div>
         <div class="group">
             <input  type="password" ng-model="registration.password" minlength="6" maxlength="32" name="password"  required><span class="highlight"></span><span class="bar"></span>
-            <label>Пароль</label>
+            <label>Пароль *</label>
             <div class="errMsg">
-                {{registrationForm.password.$touched ? (registrationForm.password.$valid ? '' : 'Поле заповнене не коректно') : ''}}
+                {{registrationForm.password.$touched ? (registrationForm.password.$valid ? '' : 'Мінімальна кількість символів 6') : ''}}
             </div>
         </div>
         <div class="group">
             <input  type="password" ng-model="registration.repeat" minlength="6" maxlength="32" name="repeatPwd" repeat-password original-password="registration.password" required><span class="highlight"></span><span class="bar"></span>
-            <label>Повторіть пароль</label>
+            <label>Повторіть пароль *</label>
             <div class="errMsg">
-                {{registrationForm.repeatPwd.$touched ? (registrationForm.repeatPwd.$valid ? '' : 'Поле заповнене не коректно') : ''}}
+                {{registrationForm.repeatPwd.$touched ? (registrationForm.repeatPwd.$valid ? '' : 'Паролі не співпадають') : ''}}
             </div>
         </div>
         <div class="errMsg">

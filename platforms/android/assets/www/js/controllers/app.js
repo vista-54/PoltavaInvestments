@@ -5,7 +5,7 @@
  */
 
 
-var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngAnimate','ngStorage']);
+var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngAnimate', 'ngStorage']);
 app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider
                 .when('/index', {
@@ -53,6 +53,9 @@ app.controller('appController', appController);
 
 function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $mdDialog) {
     $scope.toggleRight = $rootScope.toggleRight;
+    $scope.test = function () {
+        console.log('test');
+    }
     $rootScope.Login = function () {
         window.location = '#/login';
         $rootScope.close();
@@ -76,8 +79,8 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
         window.location = '#/account';
         $rootScope.close();
     };
-    
-    $rootScope.getProjectList=function(){
+
+    $rootScope.getProjectList = function () {
         window.location = '#/';
         $rootScope.close();
     };
@@ -113,7 +116,7 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
     };
     $scope.openProjectList = $rootScope.openProjectList;
     $scope.openAccount = $rootScope.openAccount;
-    
+
     /*Global functions START*/
 //    $rootScope.mainUrl = 'http://invest.skrygroup.com/backend/api/web/v1/';
     $rootScope.mainUrl = 'http://poltavainvestment.com/api/web/v1/';
@@ -150,11 +153,11 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
 
     //получаем рекомендованый проект.
     $http.get($rootScope.mainUrl + 'project/view-main-recommend-project').success(function (result) {
-        if (typeof result==='object') {
-            isRecommended = true;
+        if (typeof result === 'object') {
+            $scope.isRecommended = true;
         }
         else {
-            isRecommended = false;
+            $scope.isRecommended = false;
         }
         $scope.projectRec = result;
         $scope.projectRec.percent = Math.ceil($scope.projectRec.investments * 100 / $scope.projectRec.cost_total);
@@ -175,7 +178,7 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
     /*Menu START*/
     $scope.Login = $rootScope.Login;
     $scope.Registration = $rootScope.Registration;
-    $scope.getProjectList=$rootScope.getProjectList;
+    $scope.getProjectList = $rootScope.getProjectList;
 
     /**
      * Supplies a function that will continue to operate until the
@@ -271,9 +274,12 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
 
     /*Project List END*/
     $rootScope.logout = function () {
-        window.location='#/';
+        window.location = '#/';
         window.location.reload();
 
+    };
+    $rootScope.onSwipeRight = function (ev) {
+        console.log('Swiped Right!');
     };
 }
 
@@ -299,7 +305,8 @@ app.directive("scroll", function ($window, $parse) {
             scope.$apply();
         });
     };
-});
+})
+
 
 //app.directive("scrollTable", function ($window, $parse) {
 //    return function (scope, element, attrs) {

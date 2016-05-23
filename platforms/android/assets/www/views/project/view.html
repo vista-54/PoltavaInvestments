@@ -39,6 +39,21 @@
         <md-tab label="Коментарі" ng-click="loadComments()" >
 
             <div style="padding: 20px 10px;">
+                      {{isLogged?'':'Для коментування проектів, необхідно'}}
+                <a ng-hide="isLogged" href="#/login">Увійти в систему</a>
+                <div ng-show="isLogged">
+
+
+                    <!--<strong>Ваш комментарий:</strong>-->
+
+                    <textarea rows="8" ng-model="comment"></textarea>
+                    <div class="btnParrentBlock">
+                        <button type="button" class="button btnChoose"ng-click="sendComment(comment, project.id)">Додати коментар
+                            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                        </button> 
+                    </div>
+
+                </div>
                 <!--<strong>Комментарии:</strong>-->
                 <ul class="comments" >
                     <li ng-repeat="comment in comments">
@@ -62,19 +77,7 @@
 
                     </li>
                 </ul>
-                <div ng-show="isLogged">
-
-
-                    <!--<strong>Ваш комментарий:</strong>-->
-
-                    <textarea rows="8" ng-model="comment"></textarea>
-                    <div class="btnParrentBlock">
-                        <button type="button" class="button btnChoose"ng-click="sendComment(comment, project.id)">Додати коментар
-                            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
-                        </button> 
-                    </div>
-
-                </div>
+          
             </div>
         </md-tab>
 
