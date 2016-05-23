@@ -9,7 +9,7 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
                         },
                         {
@@ -22,13 +22,21 @@
             "AndroidManifest.xml": {
                 "parents": {
                     "/manifest": [],
-                    "/*": []
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        }
+                    ]
                 }
             }
         }
     },
     "installed_plugins": {
-        "cordova-plugin-splashscreen": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.Vista.PoltavaInvestments"
+        },
+        "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.Vista.PoltavaInvestments"
         },
         "cordova-plugin-whitelist": {
