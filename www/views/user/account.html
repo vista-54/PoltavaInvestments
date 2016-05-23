@@ -22,7 +22,7 @@
                     <span>Акцій:{{project.my_quantity}}</span>
                     <span>Вартість:{{project.cost}}</span>
                     <div ng-show="{{comparison(project.last_payment_date)}}" style="margin-top:10px;overflow: hidden;padding: 0 0 10px 0;">
-                        <input style="display: inline-block;width: 30%;" ng-model="account.my_quantity" min="0" value="{{project.my_quantity/10>1?account.my_quantity=10:account.my_quantity=1}}"  type="number"><div style="float: right;"><md-button style="    display: inline-block;" class="md-raised buy" ng-click="buy(account, project.id)">Придбати</md-button><md-button style="    display: inline-block;" class="md-raised sell" ng-click="sell(account, project.id)">Продати</md-button></div>
+                        <input style="display: inline-block;width: 30%;" ng-model="account.my_quantity" min="0" max="{{project.my_quantity}}"  type="number"><div style="float: right;"><md-button style="    display: inline-block;" class="md-raised buy" ng-click="buy(account, project.id)">Придбати</md-button><md-button style="    display: inline-block;" class="md-raised sell" ng-click="sell(account, project.id)">Продати</md-button></div>
                     </div>
                 </li>
             </ul>

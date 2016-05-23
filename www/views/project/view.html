@@ -62,6 +62,8 @@
 
                     </li>
                 </ul>
+                {{isLogged?'':'Для коментування проектів, необхідно'}}
+                <a ng-hide="isLogged" href="#/login">Увійти в систему</a>
                 <div ng-show="isLogged">
 
 

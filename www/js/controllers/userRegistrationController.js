@@ -50,6 +50,9 @@ function userRegistrationController($scope, $http, $rootScope) {
     $scope.registrationFnc = function (form, reg) {
         if (form.$valid) {
             reg.birthday = new Date(reg.birthday).getTime() / 1000;
+            if(isNaN(reg.birthday)){
+                delete(reg.birthday);
+            }
             var config = {
                 transformRequest: angular.identity,
                 headers: {
@@ -62,6 +65,7 @@ function userRegistrationController($scope, $http, $rootScope) {
             fd.append('imageFile', file.files[0]);
             for (var i in reg) {
                 var obj = reg[i];
+                
                 fd.append(i, obj);
             }
 //            fd.append(reg);
@@ -70,10 +74,18 @@ function userRegistrationController($scope, $http, $rootScope) {
                     .success(function (result) {
                         if (typeof result.error === 'undefined') {
                             console.log(result);
+                            var loginData = {
+                                login: reg['email'],
+                                password: reg['password']
+                            };
+                            var form={
+                                $valid:true
+                            };
+                            $rootScope.login(form,loginData);
                             window.location = '#/';
                         }
-                        else{
-                            $scope.errorMsg=result;
+                        else {
+                            $scope.errorMsg = result.error;
                         }
                     }).error(function (error) {
                 console.log(error);

@@ -81,7 +81,7 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
                     '<md-dialog style="width:100%;padding: 0 23px;" aria-label="List dialog">' +
                     '<div class=modalBuyHeader>' + project_name + '</div>' +
                     '  <md-dialog-content class=modalWindowBuy>' +
-                    'Скільки акцій бажаєте придбати?(доступно' + count + ')' +
+                    'Скільки акцій бажаєте придбати?(доступно ' + count + ')' +
                     ' <br><input type="number" ng-init="c=0" min=0 max="' + count + '"ng-model="c" >' +
                     '  </md-dialog-content>' +
                     '  <md-dialog-actions>' +

@@ -7,7 +7,9 @@ and open the template in the editor.
     Created on : 20.04.2016, 18:34:19
     Author     : Виталий
 */
-
+a.md-default-theme:not(.md-button), a:not(.md-button) {
+    color: rgb(0,0,0);
+}
 @font-face {
     font-family: Roboto; /* Имя шрифта */
     src: url(fonts/Roboto.woff); /* Путь к файлу со шрифтом */
@@ -734,3 +736,11 @@ md-dialog{
 .back-button:hover {
     color: rgb(167, 204, 174);
 }
+
+
+/*REGISTRATION FORM START*/
+md-select.md-default-theme:not([disabled]):focus ._md-select-value, md-select:not([disabled]):focus ._md-select-value {
+    border-bottom-color: rgb(67, 195, 42);
+    color: rgba(0,0,0,0.87);
+}
+/*REGISTRATION FORM END*/

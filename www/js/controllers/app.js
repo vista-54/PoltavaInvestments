@@ -53,6 +53,9 @@ app.controller('appController', appController);
 
 function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $mdDialog) {
     $scope.toggleRight = $rootScope.toggleRight;
+    $scope.test=function(){
+        console.log('test');
+    }
     $rootScope.Login = function () {
         window.location = '#/login';
         $rootScope.close();

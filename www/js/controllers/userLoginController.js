@@ -52,7 +52,8 @@ function userLoginController($scope, $rootScope, $http, $localStorage) {
         $scope.user.remember = $localStorage.remember;
         $('input').addClass('used');
     }
-    $scope.login = function (form, user) {
+    
+    $rootScope.login = function (form, user) {
 
         if (user.remember) {
             console.log(user.remember);
@@ -62,7 +63,7 @@ function userLoginController($scope, $rootScope, $http, $localStorage) {
         } else {
             $localStorage.remember = false;
         }
-
+        
         if (form.$valid) {
             console.log(user);
             var data = {
@@ -99,6 +100,8 @@ function userLoginController($scope, $rootScope, $http, $localStorage) {
                         console.log(error);
                     });
         }
-    }
-    ;
+    };
+    
+    $scope.login=$rootScope.login;
+    
 }
