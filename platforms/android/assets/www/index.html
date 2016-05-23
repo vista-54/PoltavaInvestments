@@ -33,7 +33,7 @@ and open the template in the editor.
             <!--            <div class="balanceLine" style="margin: 20px 0;" ng-style="line"></div>-->
         </header>
     <ng-view ></ng-view>
-    <div  layout="column" ng-cloak>
+    <div  layout="column" ng-cloak ng-touchmove="$root.someFunction($event)"> 
         <section layout="row" flex >           
             <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
                 <md-toolbar class="md-theme-light">
@@ -66,6 +66,7 @@ and open the template in the editor.
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
     <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/angular-touch.js"></script>-->
     <script src="js/libs/jq/jquery.min.js"></script>
+    <script src="js/libs/ngTouch.js"></script>
     <script src="js/controllers/app.js"></script>
     <script src="js/controllers/userLoginController.js"></script>
     <script src="js/controllers/userRegistrationController.js"></script>

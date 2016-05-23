@@ -5,7 +5,7 @@
  */
 
 
-var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngAnimate', 'ngStorage']);
+var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngAnimate', 'ngStorage', 'ngTouch']);
 app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider
                 .when('/index', {
@@ -280,6 +280,18 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
     };
     $rootScope.onSwipeRight = function (ev) {
         console.log('Swiped Right!');
+    };
+    $rootScope.someFunction = function (e) {
+        if (typeof pageX !== 'undefined') {
+            if (pageX < e.changedTouches[0].clientX) {
+                console.log('swipe Right');
+                 $rootScope.close();
+                 
+            }
+        }
+
+        pageX = e.changedTouches[0].clientX;
+//        console.log(e);
     };
 }
 
