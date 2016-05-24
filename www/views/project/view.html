@@ -16,7 +16,7 @@
     </div>
 
     <md-tabs md-dynamic-height style="width: 100%">
-        <md-tab label="Детальніше"|translate>
+        <md-tab label='{{"Детальніше"|translate}}'>
 
             <div class="topProject">
 
@@ -36,7 +36,7 @@
                                 </div>-->
             </div>
         </md-tab>
-        <md-tab label="Коментарі"|translate ng-click="loadComments()" >
+        <md-tab label='{{"Коментарі"|translate}}' ng-click="loadComments()" >
 
             <div style="padding: 20px 10px;">
                 {{isLogged ? '' : 'Для коментування проектів, необхідно'|translate}}
