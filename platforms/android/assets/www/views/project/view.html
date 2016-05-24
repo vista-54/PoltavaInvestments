@@ -16,18 +16,18 @@
     </div>
 
     <md-tabs md-dynamic-height style="width: 100%">
-        <md-tab label="Детальніше">
+        <md-tab label="Детальніше"|translate>
 
             <div class="topProject">
 
                 <!--<div>{{project.description}}</div>-->
                 <nav>
-                    <div><span>Необхідно зібрати<span class="titleDigital"> {{project.cost_total}}&#8372;</span></span></div>
-                    <div><span>Зібрано<span class="titleDigital"> {{(project.cost_total * Math.ceil(project.investments * 100 / project.cost_total)) / 100}}&#8372;</span></span></div>
-                    <div><span>До кінця збору коштів<span class="titleDigital">{{date(project.closing_date)}} днів</span></span></div>
+                    <div><span>{{"Необхідно зібрати"|translate}}<span class="titleDigital"> {{project.cost_total}}&#8372;</span></span></div>
+                    <div><span>{{"Зібрано"|translate}}<span class="titleDigital"> {{(project.cost_total * Math.ceil(project.investments * 100 / project.cost_total)) / 100}}&#8372;</span></span></div>
+                    <div><span>{{"До кінця збору коштів"|translate}}<span class="titleDigital">{{date(project.closing_date)}} {{"днів"|translate}}</span></span></div>
                     <!--<span>Дата релізу: <span class="titleDigital">{{contertToDate(project.release_date)}}</span></span><br>-->
                     <!--<span>Дата окупності: <span class="titleDigital">{{contertToDate(project.payback_period)}}</span></span><br>-->
-                    <div><span>Очікуваний прибуток <span class="titleDigital">{{project.profitability}}%</span></span></div>
+                    <div><span>{{"Очікуваний прибуток"|translate}} <span class="titleDigital">{{project.profitability}}%</span></span></div>
                 </nav>
                 <!--                <div>
                                     <a href="list.html"></a>
@@ -36,11 +36,11 @@
                                 </div>-->
             </div>
         </md-tab>
-        <md-tab label="Коментарі" ng-click="loadComments()" >
+        <md-tab label="Коментарі"|translate ng-click="loadComments()" >
 
             <div style="padding: 20px 10px;">
-                      {{isLogged?'':'Для коментування проектів, необхідно'}}
-                <a ng-hide="isLogged" href="#/login">Увійти в систему</a>
+                {{isLogged ? '' : 'Для коментування проектів, необхідно'|translate}}
+                <a ng-hide="isLogged" href="#/login">{{"Увійти в систему"|translate}}</a>
                 <div ng-show="isLogged">
 
 
@@ -48,7 +48,7 @@
 
                     <textarea rows="8" ng-model="comment"></textarea>
                     <div class="btnParrentBlock">
-                        <button type="button" class="button btnChoose"ng-click="sendComment(comment, project.id)">Додати коментар
+                        <button type="button" class="button btnChoose"ng-click="sendComment(comment, project.id)">{{"Додати коментар"|translate}}
                             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
                         </button> 
                     </div>
@@ -77,7 +77,7 @@
 
                     </li>
                 </ul>
-          
+
             </div>
         </md-tab>
 

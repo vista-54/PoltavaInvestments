@@ -5,8 +5,8 @@
  */
 
 
-var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngAnimate', 'ngStorage', 'ngTouch']);
-app.config(['$routeProvider', function ($routeProvider) {
+var app = angular.module('app', ['ngRoute', 'ngMaterial', 'ngAnimate', 'ngStorage', 'ngTouch', 'pascalprecht.translate']);
+app.config(['$routeProvider', '$translateProvider', function ($routeProvider, $translateProvider) {
         $routeProvider
                 .when('/index', {
                     templateUrl: 'views/index.html',
@@ -47,15 +47,23 @@ app.config(['$routeProvider', function ($routeProvider) {
                 .otherwise({
                     redirectTo: '/'
                 });
+        $translateProvider.useStaticFilesLoader({
+            prefix: 'translate/',
+            suffix: '.json'
+        });
+        $translateProvider.preferredLanguage('ua');
     }]);
 app.controller('appController', appController);
 
 
-function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $mdDialog) {
+function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $mdDialog,$translate) {
+    $rootScope.changeLng=function(lng){
+      $translate.use(lng);  
+    };
     $scope.toggleRight = $rootScope.toggleRight;
     $scope.test = function () {
         console.log('test');
-    }
+    };
     $rootScope.Login = function () {
         window.location = '#/login';
         $rootScope.close();
@@ -248,7 +256,9 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
     };
     console.log('projectListController');
     $scope.getList = function (data) {
+        $('.loading').show();
         $http.get($rootScope.mainUrl + 'project/view-all-project?default_page_size=' + data.default_page_size + '&order_attr=' + data.order_attr + '&sort=' + data.sort + '&page=' + data.page).success(function (result) {
+           $('.loading').hide();
             $scope.projects = $scope.projects.concat(result.project);
             $scope.pages = result.pages;
             console.log(result);
@@ -285,8 +295,8 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
         if (typeof pageX !== 'undefined') {
             if (pageX < e.changedTouches[0].clientX) {
                 console.log('swipe Right');
-                 $rootScope.close();
-                 
+                $rootScope.close();
+
             }
         }
 

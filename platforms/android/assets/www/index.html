@@ -15,6 +15,7 @@ and open the template in the editor.
 
     </head>
     <body>
+        <!--{{"name"|translate}}-->
         <header style="text-align: center;position: relative; background: rgb(255,255,255);padding: 20px 0;box-shadow: 0 0 10px rgba(0,0,0,0.5);"  >
             <i class="back-button fa fa-angle-left " aria-hidden="true"></i>
             <a href="#/" ><img style=" width: 15%;" alt="logo" src="img/logo.png"></a>
@@ -37,22 +38,27 @@ and open the template in the editor.
         <section layout="row" flex >           
             <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
                 <md-toolbar class="md-theme-light">
-                    <h1 class="md-toolbar-tools toolbarHeader">{{isLogged?$root.userData.first_name+' '+$root.userData.last_name :'Меню'}}</h1>
+                    <h1 class="md-toolbar-tools toolbarHeader">{{isLogged?$root.userData.first_name+' '+$root.userData.last_name :'Меню'|translate}}</h1>
                 </md-toolbar>
                 <md-content  layout-padding style="padding: 0; font-size: 20px;">
                     <!--<a ng-hide="isLogged" class="menuLink" ng-click="Registration()">Реєстрація</a>-->
-                    <a ng-hide="isLogged" class="menuLink" ng-click="Login()">Авторизація</a>
-                    <a ng-show="isLogged" class="menuLink" ng-click="openAccount()">Мої інвестиції</a>
-                    <a ng-click="getProjectList()" class="menuLink" >Список проектів</a>
-                    <a ng-show="isLogged" ng-click="$root.logout()" class="menuLink" >Вийти</a>
+                    <a ng-hide="isLogged" class="menuLink" ng-click="Login()">{{"Авторизація"|translate}}</a>
+                    <a ng-show="isLogged" class="menuLink" ng-click="openAccount()">{{"Мої інвестиції"|translate}}</a>
+                    <a ng-click="getProjectList()" class="menuLink" >{{"Список проектів"|translate}}</a>
+                    <a ng-show="isLogged" ng-click="$root.logout()" class="menuLink" >{{"Вийти"|translate}}</a>
                 </md-content>
             </md-sidenav>
         </section>
     </div>
     <footer>
+        <ul class="flags">
+            <li ng-click="$root.changeLng('ua')" ><img alt="img" src="img/Ukraine.png"></li>
+            <li ng-click="$root.changeLng('ru')"><img alt="img" src="img/Russia.png"></li>
+            <li ng-click="$root.changeLng('en')"><img alt="img" src="img/United-Kingdom.png"></li>
+        </ul>
         Poltava Investments Company &copy; 2016
     </footer>
-
+<i class="loading"></i>
 
 
     <!--<script src="js/libs/angular.min.js"></script>-->
@@ -64,6 +70,8 @@ and open the template in the editor.
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+    <script src="js/libs/angular-translate.min.js"></script>
+    <script src="js/libs/angular-translate-loader-static-files.min.js"></script>
     <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/angular-touch.js"></script>-->
     <script src="js/libs/jq/jquery.min.js"></script>
     <script src="js/libs/ngTouch.js"></script>

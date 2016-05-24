@@ -2,16 +2,16 @@
     <form name="loginform">
         <div class="group">
             <input type="email" name="email" ng-model="user.login" required><span class="highlight"></span><span class="bar"></span>
-            <label>Email</label>
+            <label>{{"Ел. пошта"|translate}}</label>
             <div class="errMsg">
-                {{loginform.email.$touched ? (loginform.email.$valid ? '' : 'Поле заповнене не коректно') : ''}}
+                {{loginform.email.$touched ? (loginform.email.$valid ? '' : 'Поле заповнене не коректно'|translate) : ''}}
             </div>
         </div>
         <div class="group">
             <input type="password" ng-model="user.password" name="password" required><span class="highlight"></span><span class="bar"></span>
-            <label>Password</label>
+            <label>{{"Пароль"|translate}}</label>
               <div class="errMsg">
-                {{loginform.password.$touched ? (loginform.password.$valid ? '' : 'Поле заповнене не коректно') : ''}}
+                {{loginform.password.$touched ? (loginform.password.$valid ? '' : 'Поле заповнене не коректно'|translate) : ''}}
             </div>
         </div>
         <div class="errMsg">
@@ -19,14 +19,14 @@
         </div>
         <div class="group checkbox">
             <input type="checkbox" id="rememberMe" name="rememberMe" ng-model="user.remember" >
-            <label for="rememberMe">Remember me</label>
+            <label for="rememberMe">{{"Запам'ятати мене"|translate}}</label>
         </div>
 
         <div style="text-align: center;">
-            <a href="#/registration">Реєстрація</a>
+            <a href="#/registration">{{"Реєстрація"|translate}}</a>
         </div>
         <div class="btnParrentBlock">
-            <button type="button" class="button btnChoose" ng-click="login(loginform, user)">Log in
+            <button type="button" class="button btnChoose" ng-click="login(loginform, user)">{{"Увійти"|translate}}
                 <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
             </button>
         </div>

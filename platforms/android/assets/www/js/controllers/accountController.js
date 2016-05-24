@@ -36,9 +36,10 @@ function accountController($scope, $rootScope, $http) {
         page: 1
     };
     $scope.getList = function () {
+        $('.loading').show();
         $http.get($rootScope.mainUrl + 'project/view-my-investment?default_page_size=' + $scope.data.size + '&order_attr=' + $scope.data.order_attr + '&sort=' + $scope.data.sort + '&page=' + $scope.data.page + '&access-token=' + $rootScope.userData.auth_key)
                 .success(function (result) {
-
+                    $('.loading').hide();
                     console.log(result);
                     $scope.projects = $scope.projects.concat(result.my_projects.result);
                     $scope.balance = result.my_balance;
@@ -128,10 +129,10 @@ function accountController($scope, $rootScope, $http) {
     $scope.tranzactions = [];
 //                .concat(data.project)
     $scope.transaction = function (loadMore) {
-
+        $('.loading').show();
         $http.get($rootScope.mainUrl + 'transaction/view-by-user?default_page_size=' + $scope.transct.default_page_size + '&order_attr=' + $scope.transct.order_attr + '&sort=' + $scope.transct.sort + '&page=' + $scope.transct.page + '&access-token=' + $rootScope.userData.auth_key)
                 .success(function (result) {
-
+                    $('.loading').hide();
                     $scope.pages = result.pages;
                     if (loadMore) {
                         $scope.transct.page++;

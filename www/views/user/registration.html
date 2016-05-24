@@ -2,53 +2,53 @@
     <form name="registrationForm">        
         <div class="group">
             <input  ng-model="registration.first_name" name="name" required ng-pattern="/^([a-zA-ZА-Яа-я0-9ЇїёЁіІ])*$/" ><span class="highlight"></span><span class="bar"></span>
-            <label>Ім'я *</label>
+            <label>{{"Ім'я" |translate}} *</label>
             <div class="errMsg">
-                {{registrationForm.name.$touched ? (registrationForm.name.$valid ? '' : 'Поле заповнене не коректно') : ''}}
+                {{registrationForm.name.$touched ? (registrationForm.name.$valid ? '' : 'Поле заповнене не коректно'|translate) : ''}}
             </div>
         </div>
 
         <div class="group">
             <input  ng-model="registration.last_name" name="lastname" required ng-pattern="/^([a-zA-ZА-Яа-я0-9ЇїёЁіІ])*$/"><span class="highlight"></span><span class="bar"></span>
-            <label>Прізвище *</label>
+            <label>{{"Прізвище"|translate}} *</label>
             <div class="errMsg">
-                {{registrationForm.lastname.$touched ? (registrationForm.lastname.$valid ? '' : 'Поле заповнене не коректно') : ''}}
+                {{registrationForm.lastname.$touched ? (registrationForm.lastname.$valid ? '' : 'Поле заповнене не коректно'|translate) : ''}}
             </div>
         </div>
         <div class="group">
             <md-select  ng-model="registration.gender" name="gender" >
-                <md-option  value="7">Стать</md-option>
-                <md-option value="0">Чоловіча</md-option>
-                <md-option value="1">Жіноча</md-option>
+                <md-option  value="7">{{"Стать"|translate}}</md-option>
+                <md-option value="0">{{"Чоловіча"|translate}}</md-option>
+                <md-option value="1">{{"Жіноча"|translate}}</md-option>
             </md-select>
             <div class="errMsg">
-                {{registrationForm.gender.$touched ? (registrationForm.gender.$modelValue === 7 ? 'Оберіть будь ласка стать' : '') : ''}}
+                {{registrationForm.gender.$touched ? (registrationForm.gender.$modelValue === 7 ? ('Оберіть будь ласка стать'|translate) : '') : ''}}
             </div>
         </div>
         <div class="group">
             <input  type="date" ng-model="registration.birthday" name="birthday" ><span class="highlight"></span><span class="bar"></span>
-            <label>Дата народження </label>
+            <label>{{"Дата народження"|translate}}</label>
             <div class="errMsg">
-                {{registrationForm.birthday.$touched ? (registrationForm.birthday.$valid ? '' : 'Поле заповнене не коректно') : ''}}
+                {{registrationForm.birthday.$touched ? (registrationForm.birthday.$valid ? '' : 'Поле заповнене не коректно'|translate) : ''}}
             </div>
         </div>
         <div class="group">
             <input type="phone"  ng-model="registration.mobile"  name="phone"   ng-pattern="/^([0-9+r])*$/"><span class="highlight"></span><span class="bar"></span>
-            <label>Телефон</label>
+            <label> {{"Телефон"|translate}}</label>
             <div class="errMsg">
-                {{registrationForm.phone.$touched ? (registrationForm.phone.$valid ? '' : 'Поле заповнене не коректно') : ''}}
+                {{registrationForm.phone.$touched ? (registrationForm.phone.$valid ? '' : 'Поле заповнене не коректно'|translate) : ''}}
             </div>
 
         </div>
         <div class="group">
             <input  type="email" ng-model="registration.email" name="email" required ><span class="highlight"></span><span class="bar"></span>
-            <label>Ел. пошта *</label>
+            <label> {{"Ел. пошта"|translate}}*</label>
             <div class="errMsg">
-                {{registrationForm.email.$touched ? (registrationForm.email.$valid ? '' : 'Поле заповнене не коректно') : ''}}
+                {{registrationForm.email.$touched ? (registrationForm.email.$valid ? '' : 'Поле заповнене не коректно'|translate) : ''}}
             </div>
         </div>
         <div class="group">
-            <button type="button"  class="button btnChoose" ng-click="choosePhoto()">Фото
+            <button type="button"  class="button btnChoose" ng-click="choosePhoto()">{{"Фото"|translate}}
                 <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
             </button>
             <!--<md-button id="uploadButton" ng-click="choosePhoto()" class="button btnChoose">Фото</md-button>-->
@@ -58,22 +58,22 @@
         </div>
         <div class="group">
             <input  type="password" ng-model="registration.password" minlength="6" maxlength="32" name="password"  required><span class="highlight"></span><span class="bar"></span>
-            <label>Пароль *</label>
+            <label>{{"Пароль"|translate}} *</label>
             <div class="errMsg">
-                {{registrationForm.password.$touched ? (registrationForm.password.$valid ? '' : 'Мінімальна кількість символів 6') : ''}}
+                {{registrationForm.password.$touched ? (registrationForm.password.$valid ? '' : 'Мінімальна кількість символів 6'|translate) : ''}}
             </div>
         </div>
         <div class="group">
             <input  type="password" ng-model="registration.repeat" minlength="6" maxlength="32" name="repeatPwd" repeat-password original-password="registration.password" required><span class="highlight"></span><span class="bar"></span>
-            <label>Повторіть пароль *</label>
+            <label>{{"Повторіть пароль"|translate}} *</label>
             <div class="errMsg">
-                {{registrationForm.repeatPwd.$touched ? (registrationForm.repeatPwd.$valid ? '' : 'Паролі не співпадають') : ''}}
+                {{registrationForm.repeatPwd.$touched ? (registrationForm.repeatPwd.$valid ? '' : 'Паролі не співпадають'|translate) : ''}}
             </div>
         </div>
         <div class="errMsg">
             {{errorMsg}}
         </div>
-        <button type="button" ng-disabled="registration.password !== registration.repeat" class="button btnChoose" ng-click="registrationFnc(registrationForm, registration)">Зареєструватися
+        <button type="button" ng-disabled="registration.password !== registration.repeat" class="button btnChoose" ng-click="registrationFnc(registrationForm, registration)">{{"Зареєструватися"|translate}}
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
         </button>
     </form>

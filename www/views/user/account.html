@@ -1,32 +1,29 @@
 <div class="account">
     <md-tabs md-dynamic-height style="margin: 15px;">
-        <md-tab label="Мої проекти" scroll style="background: rgb(255,255,255);" >
+        <md-tab label='{{"Мої проекти"|translate}}' scroll style="background: rgb(255,255,255);" >
             <ul style="padding: 0;">
                 <li ng-repeat="project in projects">
 
                     <div style="position: relative"><img style="width: 100%;" alt="preview" src="{{project.image}}"><img  ng-show="project.last_payment_date" style="position: absolute;left: 5%;top: 5%;border-radius: 59%;background: rgb(244, 67, 54);" alt="star" src="img/ic_star.svg"></div>
                     <span ng-click="OpenInfo(project.id)" class="projectTitle">{{project.name}}</span><br>
-                    <span>Акцій:{{project.my_quantity}}</span>
-                    <span>Вартість:{{project.cost}}</span>
+                    <span>{{"Акцій"|translate}}:{{project.my_quantity}}</span>
+                    <span>{{"Вартість"|translate}}:{{project.cost}}</span>
                     <div ng-show="{{comparison(project.last_payment_date)}}" style="margin-top:10px;overflow: hidden;padding: 0 0 10px 0;">
-
-                        <input style="display: inline-block;width: 30%;" name="count" ng-pattern="/^([0-9])*$/" ng-model="account.my_quantity" min="0" max="{{project.my_quantity}}"  ><div style="float: right;"><md-button style="    display: inline-block;" class="md-raised buy" ng-click="buy(account, project.id)">Придбати</md-button><md-button style="    display: inline-block;" class="md-raised sell" ng-click="sell(account, project.id)">Продати</md-button></div>
-
-
+                        <input style="display: inline-block;width: 30%;" name="count" ng-pattern="/^([0-9])*$/" ng-model="account.my_quantity" min="0" max="{{project.my_quantity}}"  ><div style="float: right;"><md-button style="    display: inline-block;" class="md-raised buy" ng-click="buy(account, project.id)">{{"Придбати"|translate}}</md-button><md-button style="    display: inline-block;" class="md-raised sell" ng-click="sell(account, project.id)">{{"Продати"|translate}}</md-button></div>
                     </div>
                 </li>
             </ul>
-            <div style="text-align: center;"><a  ng-show="LoadMoreProjects" ng-click="getList()">Завантажити більше</a></div>
+            <div style="text-align: center;"><a  ng-show="LoadMoreProjects" ng-click="getList()">{{"Завантажити більше"|translate}}</a></div>
         </md-tab>
-        <md-tab label="Транзакції" scroll-table ng-click="transaction()"> 
+        <md-tab label='{{"Транзакції"|translate}}' scroll-table ng-click="transaction()"> 
             <ul style="padding: 0 10px;" class="tranzaction">
                 <li ng-repeat="tranzaction in tranzactions">
                     <span style="color: rgb(171, 158, 158); ">{{contertToDate(tranzaction.date)}} </span><br>
-                    <span style="font-size: 20px;font-weight: 500">{{tranzaction.id_type==='Deposite'?'Поповнено рахунок на суму '+tranzaction.sum+'&#8372;':(tranzaction.id_type==='Freeze'?'Інвестовано в проект '+tranzaction.id_project+' '+tranzaction.sum +'&#8372;':'Повернено з проекту '+tranzaction.id_project+' '+tranzaction.sum+'&#8372;')}}</span>
+                    <span style="font-size: 20px;font-weight: 500">{{tranzaction.id_type==='Deposite'?(('Поповнено рахунок на суму '|translate) +tranzaction.sum+'&#8372;'):(tranzaction.id_type==='Freeze'?(('Інвестовано в проект '|translate)+tranzaction.id_project+' '+tranzaction.sum +'&#8372;'):(('Повернено з проекту '|translate)+tranzaction.id_project+' '+tranzaction.sum+'&#8372;'))}}</span>
                 </li>
             </ul>
 
-            <a ng-show="LoadMore" ng-click="transaction(true)">Load More</a>
+            <a ng-show="LoadMore" ng-click="transaction(true)">{{"Завантажити більше"|translate}}</a>
         </md-tab>
     </md-tabs>
 </div>

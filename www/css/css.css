@@ -744,3 +744,24 @@ md-select.md-default-theme:not([disabled]):focus ._md-select-value, md-select:no
     color: rgba(0,0,0,0.87);
 }
 /*REGISTRATION FORM END*/
+
+.flags{
+    padding: 0;
+}
+.flags li{
+    display: inline-block;
+}
+.loading {
+    height: 3em;
+    width: 3em;
+    animation: rotation 1s infinite linear;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-top-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    z-index: 9999;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -1.5em 0 0 -1.5em;
+    display: none;
+}
