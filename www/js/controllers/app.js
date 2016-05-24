@@ -56,9 +56,11 @@ app.config(['$routeProvider', '$translateProvider', function ($routeProvider, $t
 app.controller('appController', appController);
 
 
-function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $mdDialog,$translate) {
-    $rootScope.changeLng=function(lng){
-      $translate.use(lng);  
+function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $mdDialog, $translate, $localStorage) {
+    $translate.use($localStorage.lng);
+    $rootScope.changeLng = function (lng) {
+        $translate.use(lng);
+        $localStorage.lng = lng;
     };
     $scope.toggleRight = $rootScope.toggleRight;
     $scope.test = function () {
@@ -258,7 +260,7 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
     $scope.getList = function (data) {
         $('.loading').show();
         $http.get($rootScope.mainUrl + 'project/view-all-project?default_page_size=' + data.default_page_size + '&order_attr=' + data.order_attr + '&sort=' + data.sort + '&page=' + data.page).success(function (result) {
-           $('.loading').hide();
+            $('.loading').hide();
             $scope.projects = $scope.projects.concat(result.project);
             $scope.pages = result.pages;
             console.log(result);
@@ -286,7 +288,6 @@ function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $m
     $rootScope.logout = function () {
         window.location = '#/';
         window.location.reload();
-
     };
     $rootScope.onSwipeRight = function (ev) {
         console.log('Swiped Right!');

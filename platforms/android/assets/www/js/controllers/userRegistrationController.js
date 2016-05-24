@@ -6,7 +6,7 @@
 
 
 app.controller('userRegistrationController', userRegistrationController);
-function userRegistrationController($scope, $http, $rootScope) {
+function userRegistrationController($scope, $http, $rootScope, $filter) {
     $scope.choosePhoto = function () {
         $('#file').click();
     };
@@ -50,7 +50,7 @@ function userRegistrationController($scope, $http, $rootScope) {
     $scope.registrationFnc = function (form, reg) {
         if (form.$valid) {
             reg.birthday = new Date(reg.birthday).getTime() / 1000;
-            if(isNaN(reg.birthday)){
+            if (isNaN(reg.birthday)) {
                 delete(reg.birthday);
             }
             var config = {
@@ -65,7 +65,7 @@ function userRegistrationController($scope, $http, $rootScope) {
             fd.append('imageFile', file.files[0]);
             for (var i in reg) {
                 var obj = reg[i];
-                
+
                 fd.append(i, obj);
             }
 //            fd.append(reg);
@@ -78,14 +78,15 @@ function userRegistrationController($scope, $http, $rootScope) {
                                 login: reg['email'],
                                 password: reg['password']
                             };
-                            var form={
-                                $valid:true
+                            var form = {
+                                $valid: true
                             };
-                            $rootScope.login(form,loginData);
+                            $rootScope.login(form, loginData);
                             window.location = '#/';
                         }
                         else {
-                            $scope.errorMsg = result.error;
+                            $scope.errorMsg = ($filter('translate')('Вказана адреса Ел. пошти вже зареєстрована'));
+                            
                         }
                     }).error(function (error) {
                 console.log(error);

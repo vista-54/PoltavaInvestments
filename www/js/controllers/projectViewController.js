@@ -7,7 +7,7 @@
 
 app.controller('projectViewController', projectViewController);
 
-function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialog) {
+function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialog, $filter) {
 //    $scope.isLogged = $rootScope.isLogged;
     /*ROOT START*/
     $scope.Math = $rootScope.Math;
@@ -49,20 +49,32 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
 
                 });
     };
+    $rootScope.getBalance = function () {
+        $http.get($rootScope.mainUrl + 'user/view-my-balance?access-token=' + $rootScope.userData.auth_key)
+                .success(function (result) {
+                    var red = (result.deducted * 100) / (parseFloat(result.balance) + parseFloat(result.deducted));
+                    $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 218, 206, 206) ' + red + '%, rgb(167, 204, 174)' + red + '%)'};
+                    $rootScope.headers.balance = result.balance;
+                    $rootScope.headers.deducted = result.deducted;
+                    $rootScope.headers.line = $scope.line;
+
+                })
+                .error(function (error) {
+                    console.log(error);
+                })
+    };
     $scope.view = function (id) {
         $http.get($rootScope.mainUrl + 'project/view-one-project?id_project=' + id).success(function (result) {
             console.log(result);
             $scope.project = result;
-            var red = Math.ceil($scope.project.investments * 100 / $scope.project.cost_total);
-            $scope.line = {'background': '-webkit-linear-gradient(right, rgb( 218, 206, 206) ' + (100 - red) + '%, rgb(167, 204, 174)' + (100 - red) + '%)'};
+
 //            $scope.project.release_date = new Date(result.release_date).getHours();
             $scope.Math = $rootScope.Math;
             $scope.date = $rootScope.date;
             $scope.contertToDate = $rootScope.contertToDate;
-            $rootScope.headers.balance = result.my_balance.balance;
-            $rootScope.headers.deducted = result.my_balance.deducted;
-            if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest')
-                $scope.$apply();
+            $rootScope.getBalance();
+
+
 
         }).error(function (error) {
             console.log(error);
@@ -80,17 +92,17 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
             template:
                     '<md-dialog style="width:100%;padding: 0 23px;" aria-label="List dialog">' +
                     '<div class=modalBuyHeader>' + project_name + '</div>' +
-                    '  <md-dialog-content class=modalWindowBuy>' +
-                    'Скільки акцій бажаєте придбати?(доступно ' + count + ')' +
+                    '  <md-dialog-content class=modalWindowBuy>' + $filter('translate')
+                    ('Скільки акцій бажаєте придбати') + '?(' + $filter('translate')('доступно') + ' ' + count + ')' +
                     ' <br><input type="number" ng-init="c=0" min=0 max="' + count + '"ng-model="c" >' +
                     '  </md-dialog-content>' +
                     '  <md-dialog-actions>' +
                     '    <md-button ng-click="buyPart(c,' + id + ')" class="md-primary" style="color: rgb(69, 202, 97);">' +
-                    '     Придбати' +
+                    $filter('translate')('Придбати') +
                     '    </md-button>' +
                     '  <md-dialog-actions>' +
                     '    <md-button ng-click="closeDialog()" style="color: rgb(146, 140, 140);" class="md-primary">' +
-                    '     Закрити' +
+                    $filter('translate')('Закрити') +
                     '    </md-button>' +
                     '  </md-dialog-actions>' +
                     '</md-dialog>',
@@ -110,6 +122,7 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
     };
     $scope.buyPart = function (count, id) {
 //        console.log('c' + count + ' ' + id);
+
         var data = {
             quantity_share: count,
             id_project: id,
@@ -118,18 +131,20 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
         $http.put($rootScope.mainUrl + 'project/buy-part-project?access-token=' + $rootScope.userData.auth_key, data)
                 .success(function (result) {
                     if (typeof result.error === 'undefined') {
-                        alert(data.quantity_share + ' акцій успішно придбано');
+                        alert(data.quantity_share + ' ' + $filter('translate')('акцій успішно придбано'));
                         $scope.view(id);
                         $scope.closeDialog();
                     }
                     else {
-                        alert(result.error);
+                        alert($filter('translate')('Неможна купити більше акцій ніж є в наявності'));
+//                        alert(result.error);
                     }
                     if (result === "NOT_INVESTOR") {
                         $rootScope.openNotInvestorModal();
                     }
                 })
                 .error(function (error) {
+                    
                     console.log(error);
                 });
     };

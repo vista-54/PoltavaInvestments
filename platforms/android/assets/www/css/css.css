@@ -14,6 +14,9 @@ a.md-default-theme:not(.md-button), a:not(.md-button) {
     font-family: Roboto; /* Имя шрифта */
     src: url(fonts/Roboto.woff); /* Путь к файлу со шрифтом */
 }
+a.md-default-theme:not(.md-button):hover, a:not(.md-button):hover {
+    color: rgb(0,0,0);
+}
 a,span{
     outline: none;
 }
@@ -764,4 +767,8 @@ md-select.md-default-theme:not([disabled]):focus ._md-select-value, md-select:no
     left: 50%;
     margin: -1.5em 0 0 -1.5em;
     display: none;
+}
+.loadMore{
+
+    color: rgb(167, 204, 174)!important;
 }

@@ -7,7 +7,7 @@
 
 app.controller('userLoginController', userLoginController);
 
-function userLoginController($scope, $rootScope, $http, $localStorage) {
+function userLoginController($scope, $rootScope, $http, $localStorage, $filter) {
     /**/
 
     $(window, document, undefined).ready(function () {
@@ -91,7 +91,7 @@ function userLoginController($scope, $rootScope, $http, $localStorage) {
                             console.log($rootScope.userData);
                         }
                         else{
-                            $scope.errorMsg='Невірний логін або пароль';
+                            $scope.errorMsg=($filter('translate')('Невірний логін або пароль'));
                         }
 
 

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 app.controller('accountController', accountController);
-function accountController($scope, $rootScope, $http) {
+function accountController($scope, $rootScope, $http, $filter) {
     $scope.toggleRight = $rootScope.toggleRight;
     $scope.comparison = function (f_d) {
         if (f_d === null) {
@@ -45,7 +45,7 @@ function accountController($scope, $rootScope, $http) {
                     $scope.balance = result.my_balance;
                     $rootScope.headers.balance = result.my_balance.balance;
                     $rootScope.headers.deducted = result.my_balance.deducted;
-
+                    $rootScope.getBalance();
 
                     $scope.data.page++;
                     if ($scope.data.page <= result.my_projects.pages) {
@@ -77,12 +77,12 @@ function accountController($scope, $rootScope, $http) {
                         $scope.data.page = 1;
                         $scope.projects = [];
                         $scope.getList();
-                        alert('Акції успішно продано');
+                        alert($filter('translate')('Акції успішно продано'));
 //                        $scope.transaction();
 
                     }
                     else {
-                        alert('Не можна продати більше акцій ніж у вас є');
+                        alert($filter('translate')('Не можна продати більше акцій ніж у вас є'));
                     }
                 })
                 .error(function (error) {
