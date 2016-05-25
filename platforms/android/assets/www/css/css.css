@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : Виталий
 */
 body{
-    /*display: none;*/
+    display: none;
 }
 a.md-default-theme:not(.md-button), a:not(.md-button) {
     color: rgb(0,0,0);
