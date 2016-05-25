@@ -70,7 +70,7 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
             
 //            $rootScope.countByView=result.
 //            if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest')
-                $scope.$apply();
+//                $scope.$apply();
 //            $scope.$apply();
 //            $scope.project.release_date = new Date(result.release_date).getHours();
             $scope.Math = $rootScope.Math;
