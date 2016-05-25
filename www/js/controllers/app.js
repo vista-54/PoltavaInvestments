@@ -57,6 +57,9 @@ app.controller('appController', appController);
 
 
 function appController($rootScope, $scope, $http, $timeout, $mdSidenav, $log, $mdDialog, $translate, $localStorage) {
+//    setTimeout(function(){
+//        $('body').show();
+//    },300);
     $translate.use($localStorage.lng);
     $rootScope.changeLng = function (lng) {
         $translate.use(lng);

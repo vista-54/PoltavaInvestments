@@ -90,8 +90,8 @@ function accountController($scope, $rootScope, $http, $filter) {
                 });
     };
     $scope.buy = function (account, id) {
-        if (typeof account === 'undefined') {
-            alert("Поле кількості заповнено не коректно");
+        if ((typeof account === 'undefined')||(typeof account.my_quantity === 'undefined') || (account.my_quantity === '')) {
+            alert($filter('translate')("Поле заповнене не коректно"));
             return false;
         }
         var data = {
@@ -109,13 +109,13 @@ function accountController($scope, $rootScope, $http, $filter) {
 //                        $scope.transaction();
                     }
                     else {
-                        alert('Не можна придбати більше акцій, ніж є в наявності');
+                        alert($filter('translate')("Неможна купити більше акцій ніж є в наявності"));
                     }
 
 
                 })
                 .error(function (error) {
-                    alert('Не можна придбати більше акцій, ніж є в наявності');
+                    alert($filter('translate')("Неможна купити більше акцій ніж є в наявності"));
                 });
     };
     $scope.getList();

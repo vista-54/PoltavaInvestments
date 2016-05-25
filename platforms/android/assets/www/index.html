@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html ng-app="app">
+<html ng-app="app" ng-cloak>
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
@@ -14,7 +14,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/fonts/font-awesome-4.4.0/font-awesome/css/font-awesome.min.css">
 
     </head>
-    <body>
+    <body >
         <!--{{"name"|translate}}-->
         <header style="text-align: center;position: relative; background: rgb(255,255,255);padding: 20px 0;box-shadow: 0 0 10px rgba(0,0,0,0.5);"  >
             <i class="back-button fa fa-angle-left " aria-hidden="true"></i>
@@ -33,7 +33,7 @@ and open the template in the editor.
             <img style="position: absolute;height: 50px;right: 0;top: 26px;" alt="menu" src="img/ic_menu_black_18px.svg"  ng-click="toggleRight()">
             <!--            <div class="balanceLine" style="margin: 20px 0;" ng-style="line"></div>-->
         </header>
-    <ng-view ></ng-view>
+    <ng-view  ></ng-view>
     <div  layout="column" ng-cloak ng-touchmove="$root.someFunction($event)"> 
         <section layout="row" flex >           
             <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">

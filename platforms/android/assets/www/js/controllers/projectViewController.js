@@ -66,8 +66,12 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
     $scope.view = function (id) {
         $http.get($rootScope.mainUrl + 'project/view-one-project?id_project=' + id).success(function (result) {
             console.log(result);
-            $scope.project = result;
-
+            $scope.$parent.project = result;
+            
+//            $rootScope.countByView=result.
+//            if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest')
+                $scope.$apply();
+//            $scope.$apply();
 //            $scope.project.release_date = new Date(result.release_date).getHours();
             $scope.Math = $rootScope.Math;
             $scope.date = $rootScope.date;
@@ -80,10 +84,12 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
             console.log(error);
         });
     };
+
     $scope.view($scope.id);
 
 
     $scope.openModal = function (project_name, count, id, $event) {
+
         var parentEl = angular.element(document.body);
 
         $mdDialog.show({
@@ -92,8 +98,7 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
             template:
                     '<md-dialog style="width:100%;padding: 0 23px;" aria-label="List dialog">' +
                     '<div class=modalBuyHeader>' + project_name + '</div>' +
-                    '  <md-dialog-content class=modalWindowBuy>' + $filter('translate')
-                    ('Скільки акцій бажаєте придбати') + '?(' + $filter('translate')('доступно') + ' ' + count + ')' +
+                    '  <md-dialog-content class=modalWindowBuy>' + $filter('translate')('Скільки акцій бажаєте придбати') + '?(' + $filter('translate')('доступно') + ' ' + count + ')' +
                     ' <br><input type="number" ng-init="c=0" min=0 max="' + count + '"ng-model="c" >' +
                     '  </md-dialog-content>' +
                     '  <md-dialog-actions>' +
@@ -106,22 +111,22 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
                     '    </md-button>' +
                     '  </md-dialog-actions>' +
                     '</md-dialog>',
-            locals: {
-                items: $scope.items
-            },
+//            locals: {
+//                items: $scope.items
+//            },
             controller: projectViewController
         });
 
     };
 
 
-//    function DialogController($scope, $mdDialog, items) {
-//    $scope.items = items;
+    //    function DialogController($scope, $mdDialog, items) {
+    //    $scope.items = items;
     $scope.closeDialog = function () {
         $mdDialog.hide();
     };
     $scope.buyPart = function (count, id) {
-//        console.log('c' + count + ' ' + id);
+        //        console.log('c' + count + ' ' + id);
 
         var data = {
             quantity_share: count,
@@ -131,20 +136,20 @@ function projectViewController($scope, $routeParams, $http, $rootScope, $mdDialo
         $http.put($rootScope.mainUrl + 'project/buy-part-project?access-token=' + $rootScope.userData.auth_key, data)
                 .success(function (result) {
                     if (typeof result.error === 'undefined') {
-                        alert(data.quantity_share + ' ' + $filter('translate')('акцій успішно придбано'));
+                        alert(data.quantity_share + ' ' + ($filter('translate')("акцій успішно придбано")));
                         $scope.view(id);
                         $scope.closeDialog();
                     }
                     else {
-                        alert($filter('translate')('Неможна купити більше акцій ніж є в наявності'));
-//                        alert(result.error);
+                        alert($filter('translate')("Неможна купити більше акцій ніж є в наявності"));
+                        //                        alert(result.error);
                     }
                     if (result === "NOT_INVESTOR") {
                         $rootScope.openNotInvestorModal();
                     }
                 })
                 .error(function (error) {
-                    
+
                     console.log(error);
                 });
     };

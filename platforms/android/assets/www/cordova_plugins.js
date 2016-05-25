@@ -1,26 +1,25 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/cordova-plugin-network-information/www/network.js",
-        "id": "cordova-plugin-network-information.network",
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "id": "cordova-plugin-device.device",
         "clobbers": [
-            "navigator.connection",
-            "navigator.network.connection"
+            "device"
         ]
     },
     {
-        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
-        "id": "cordova-plugin-network-information.Connection",
+        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+        "id": "cordova-plugin-splashscreen.SplashScreen",
         "clobbers": [
-            "Connection"
+            "navigator.splashscreen"
         ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-console": "1.0.4-dev",
-    "cordova-plugin-network-information": "1.2.2-dev",
+    "cordova-plugin-device": "1.1.3-dev",
+    "cordova-plugin-splashscreen": "4.0.0",
     "cordova-plugin-whitelist": "1.2.2"
 }
 // BOTTOM OF METADATA
